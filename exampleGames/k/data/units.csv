@@ -1,0 +1,13 @@
+Name,Description,Type,Icon Filename,IsLogNode
+US BDE MECH,,US MECH,..\graphics\SFGPUCIZ---H--.png,FALSE
+ALLIED BDE MECH,,ALLIED MECH,..\graphics\SFGPUCIZ---H--.png,FALSE
+ALLIED DIV INF,,ALLIED INF,..\graphics\SFGPUCI----I--.png,FALSE
+US BDE STRYKER,,US WHEELED,..\graphics\SFGPUCAW---H--.png,FALSE
+US MEB,,US MARINE,..\graphics\SFGPUCIZ---H--.png,FALSE
+ALLIED MEB,,ALLIED MARINE,..\graphics\SFGPUCI----H--.png,FALSE
+ANDONG SUPPLY DEPOT,,,..\graphics\SFGPUSS-------.png,TRUE
+SEA BASE,,,..\graphics\SFSPCA--------.png,TRUE
+BSA SUPPLY POINT,,,..\graphics\SFGPUSS-------.png,TRUE
+OBJ BLUE SUPPLY POINT,,,..\graphics\SFGPUSS-------.png,TRUE
+OBJ YELLOW SUPPLY POINT,,,..\graphics\SFGPUSS-------.png,TRUE
+MINESWEEP,,Surface combatant,..\graphics\SFSPCM--------.png,FALSE

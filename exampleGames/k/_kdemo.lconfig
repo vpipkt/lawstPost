@@ -1,0 +1,23 @@
+Game Name,Korea unclass demo
+Game Duration,20
+Game Start Date,JUL,2
+Measurement System,METRIC
+Supply Adjudication Methodology,INTEGER_BASE
+Highway Reach,5
+Supply Types,..\\DATA\\supplyTypes.csv
+Postures,..\\DATA\\postures.csv
+Consumption Classes,..\\DATA\\consumptionClasses.csv
+Prioritization Classes,..\\DATA\\prioritizationClasses.csv
+Maps,..\\DATA\\maps.csv
+Nodes,..\\DATA\\nodes.csv
+Arcs,..\\DATA\\arcs.csv
+Arc Scripts,..\\DATA\\arcScripts.csv
+Transportation Assets,..\\DATA\\transportationAssetTypes.csv
+Transportation Mode Exclusions,..\\DATA\\TransportationAssetModeExclusions.csv
+Units,..\\DATA\\units.csv
+Unit Scripts,..\\DATA\\unitScripts.csv
+Log Node Scripts,..\DATA\logNodeScripts.csv
+Pipelines,..\\DATA\\pipelines.csv
+Pipeline Scripts,..\DATA\pipelineScripts.csv
+Weather,..\\DATA\\weather.csv
+Scripted Sorties,..\\DATA\\scriptedSorties.csv

@@ -1,0 +1,4 @@
+Name,Description,Class of Supply,Is Liquid,Kilograms Per Liter
+WATER,,CLASS_I,True,0.96
+DRY_BULK,,CLASS_II,False,0
+FUEL,,CLASS_III,True,0.8
