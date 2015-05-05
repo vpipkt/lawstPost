@@ -3,7 +3,7 @@
 
 ## TODOs
 #   * Move general purpose functions to a new script and call source
-#   * Investigate using unit icons
+#   * Investigate using unit icons in charts
 #   * 
 
 readLawstConfig <- function(configFile = 'game_config.csv'){
