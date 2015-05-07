@@ -6,7 +6,7 @@
 #   * Investigate using unit icons in charts
 #   * 
 
-readLawstConfig <- function(configFile = 'game_config.csv'){
+readLawstConfig <- function(configFile = 'game_config.csv',caseName = 'case',timestamp = date()){
     #returns a list of configuration file contents
     
     cfg <- read.table(configFile, header = FALSE, sep = ",", fill = TRUE,
@@ -17,6 +17,8 @@ readLawstConfig <- function(configFile = 'game_config.csv'){
     
     #This assumes structure of the game file is stable
     return(list(GAME_NAME = cfg$value1[cfg$field == "GAME_NAME"],
+                CASE = caseName,
+                TIMESTAMP = timestamp,
                 GAME_DURATION = as.numeric(cfg$value1[cfg$field == "GAME_DURATION"]),
                 GAME_START_DATE = list(month = cfg$value1[cfg$field == "GAME_START_DATE"],
                                        day =  as.numeric(cfg$value2[cfg$field == "GAME_START_DATE"])),
@@ -82,9 +84,9 @@ readUnitScript <- function(config){
     
     # This function will return a list of two data frames. One has supply-dependent 
     #   fields. This is the other.
-    us <- expand.grid(u$UnitName, Day = seq(from = 0, to = nDay, by = 1))
+    us <- expand.grid(UnitName = u$UnitName, Day = seq(from = 0, to = nDay, by = 1))
     
-    us.supply <- expand.grid(u$UnitName, st$SupplyType,
+    us.supply <- expand.grid(UnitName = u$UnitName, SupplyType = st$SupplyType,
                              Day = seq(from = 0, to = nDay, by = 1))
     
     #read the unit script file
@@ -98,13 +100,62 @@ readUnitScript <- function(config){
     
     # Subsetting by field, merge into the normalized dataframe
     
-
+    #LATITUDE
+    us <- merge(us, subset(raw, Field == 'LOCATION', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)
+    names(us)[dim(us)[2]] <- 'Latitude'
+    us$Latitude <- as.numeric(us$Latitude)
     
-    raw
+    #Longitude
+    us <- merge(us, subset(raw, Field == 'LOCATION', c('UnitName', 'Day', 'V2')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'Longitude'
+    us$Longitude <- as.numeric(us$Longitude)
+    
+    #Strength 
+    us <- merge(us, subset(raw, Field == 'STRENGTH', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'Strength'
+    us$Strength <- as.numeric(us$Strength)
+       
+    #'POSTURE'
+    us <- merge(us, subset(raw, Field == 'POSTURE', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'Posture'
+    us$Posture <- as.factor(us$Posture)
+    
+    #Consumption Class 
+    us <- merge(us, subset(raw, Field == 'CONSUMPTION_CLASS', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'ConsumptionClass'
+    us$ConsumptionClass <- as.factor(us$ConsumptionClass)
+    
+    #Prioritization Class
+    us <- merge(us, subset(raw, Field == 'PRIORITIZATION_CLASS', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'PrioritizationClass'
+    us$PrioritizationClass <- as.factor(us$PrioritizationClass)
+    
+    # REQUIRED DAYS OF SUPPLY'
+    us <- merge(us, subset(raw, Field == 'REQUIRED_DAYS_OF_SUPPLY', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'ReqDaysSupply'
+    us$ReqDaysSupply <- as.numeric(us$ReqDaysSupply)
+    
+    #'DOMAIN'
+    us <- merge(us, subset(raw, Field == 'DOMAIN', c('UnitName', 'Day', 'V1')), 
+                by = c('UnitName', 'Day'), all.x = TRUE)    
+    names(us)[dim(us)[2]] <- 'Domain'
+    us$Domain <- as.factor(us$Domain)    
+    
+   #us.supply
+    'SUPPLYING_LOG_NODE' 
+    'US_BDE_MECH'
+    
     # fill in "missing" days with previous day's value
     
     
-    return(list(script = , supplyScript = us.supply))
+    return(list(script = us, supplyScript = us.supply))
 }
 
 plotLogNodeDependentSupplyLevel <- function(configFile = 'game_config.csv', logNodeName, levels = 1) {

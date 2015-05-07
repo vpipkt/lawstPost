@@ -1,6 +1,7 @@
 #test post processing functions
 
 rm(list=ls())
+
 source('src/LognodeSupply.R')
 
 #test the config file with absolute paths
@@ -19,4 +20,4 @@ summary(rel.u)
 head(rel.u)
 
 
-readUnitScript(rel)
+str(readUnitScript(rel))
