@@ -2,9 +2,9 @@
 
 rm(list=ls())
 
-source('src/LognodeSupply.R')
+source('src/readLawstGame.R')
 
-#test the config file with absolute paths
+#test the config file with absolute paths (need to add an abs path config to example game)
 a <- sapply(readLawstConfig('exampleGames/K/_kdemo.lconfig')$files, file.exists )
 a #should be all true
 
