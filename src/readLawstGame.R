@@ -11,7 +11,7 @@
 #   * Finish reading in other object types
 #   * Read output data
 
-readLawstConfig <- function(configFile = 'game_config.csv',caseName = 'case',timestamp = date()){
+readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', timestamp = date()){
     #returns a list of configuration file contents
     
     cfg <- read.table(configFile, header = FALSE, sep = ",", fill = TRUE,
@@ -68,20 +68,22 @@ readUnit <- function(config){
     u <- read.csv(config$files$UNITS, 
                   colClasses = c("factor", rep("character", 3), "logical"))
     #not sure if I can actually exploit the icons
-    #Standardize the names for post processing use
+    #Standardize the field names for post processing use
     names(u) <- c('UnitName', 'Description', 'UnitType', 'UnitIcon', 'IsLogNode')
     return(u)
 }
 
 readSupplyTypes <- function(config){
-    st <- read.csv(config$files$SUPPLY_TYPES, colClasses = c('factor', 'character',
-                                                         'factor', 'logical', 'numeric'),
+    st <- read.csv(config$files$SUPPLY_TYPES, 
+                   colClasses = c('factor', 'character', 'factor', 'logical', 'numeric'),
                    col.names = c('SupplyType', 'Description', 
                                  'SupplyClass', 'IsLiquid', 'Density'))
     return(st)
 }
 
 readUnitScript <- function(config){
+    require(data.table)
+    
     #assume reading units and supply types is cheap
     u <- readUnit(config)
     st <- readSupplyTypes(config)
@@ -97,12 +99,20 @@ readUnitScript <- function(config){
     #read the unit script file
     raw <- read.csv(config$files$UNIT_SCRIPTS, fill = TRUE,
                    colClasses = c('factor', 'numeric', rep('character', 3)),
-                   col.names = c('UnitName', 'Day', 'Field', 'V1', 'V2'))
+                   col.names = c('UnitName', 'Day', 'Field', 'V1', 'V2'),
+                   header = FALSE, skip = 1) #use this header & skip combination to avoid a warning; the header has 1 too few columns.
     
     # 'fields' all uppercase and replace space with underscore
     raw$Field <- toupper(raw$Field)
     raw$Field <- gsub(" ", "_", raw$Field, fixed = TRUE)
     
+    #convert raw and expand.grids into data.tables to take advantage of rolling merges
+    us.dt <- data.table(us)
+    setkey(us.dt, UnitName, Day)
+    us.supply.dt <- data.table(us.supply)
+    setkey(us.supply.dt, UnitName, SupplyType, Day)
+    raw.dt <- data.table(raw)
+            
     # Subsetting by field, merge into the normalized dataframe
     
     #LATITUDE
@@ -153,14 +163,27 @@ readUnitScript <- function(config){
     names(us)[dim(us)[2]] <- 'Domain'
     us$Domain <- as.factor(us$Domain)    
     
-   #us.supply
-    'SUPPLYING_LOG_NODE' 
-    'US_BDE_MECH'
+    # Supply type dependent 
+    #SUPPLYING LOG NODE
+    setnames(raw.dt, c('UnitName', 'Day', 'Field', 'SupplyType', 'V2'))
+    setkey(raw.dt,  UnitName, SupplyType, Day)
+    #this reassignment may not be the most efficient   
+    us.supply.dt <- raw.dt[Field=="SUPPLYING_LOG_NODE"][us.supply.dt, roll = TRUE]
+    us.supply.dt[, SupplyingLogNode := as.factor(V2)]
+    us.supply.dt[, V2 := NULL]
+    us.supply.dt[, Field := NULL]
+    setkey(us.supply.dt, UnitName, SupplyType, Day)
     
-    # fill in "missing" days with previous day's value
+         
+    #merge in the supply intrements without rolling, as a left outer join
+    us.supply.dt[raw.dt[Field == 'SUPPLY_INCREMENT'], 
+                 SupplyIncrement := as.numeric(i.V2), nomatch = NA ]
+  
+    #Supply increment is now numeric; also would rather have supplyingLN be FACTOR.
     
-    
-    return(list(script = us, supplyScript = us.supply))
+    return(list(Script = us, 
+                SupplyScript = as.data.frame(us.supply.dt)
+                ))
 }
 
 
