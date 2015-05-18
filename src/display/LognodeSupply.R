@@ -3,32 +3,14 @@
 #run this from exe directory if config file uses relative paths
 
 
-plotLogNodeDependentSupplyLevel <- function(configFile = 'game_config.csv', logNodeName, levels = 1) {
-    
-    currentLevel <- 1
+plotClientOnHand <- function(config, logNodeName, levels = 1) {
     require(ggplot2)
     
-    #read config file
-    cfg <- readLawstConfig(configFile)
-    
-    #read unit script
-    unitScript <- readUnitScript(cfg)
+    #get the data in 'risk' terms (unit risk and lognode %onhand)
+    deps <- getLognodeClientSupply(configFile, logNodeName, levels)
 
-    #get supplying lognode relation sets for logNodeName only
-    unitScriptLN <- subset(unitScript$supplyScript, SupplyingLogNode == logNodeName)
-    
-    
-    #get unit supply output
-    #subset for units of concern (and supplies and days?)
-    
-    #get lognode supply file
-    #subset for lognodes of concern (days; supply types)
-    
-    #recurse the function on those lognodes if level checks okay
-    
-    #merge/stack results
-    
-    #plot outputs, (using icons?)
+    #panel plot 
+    pcoh <- ggplot(deps)
 }
 
 # Plot overall dependent unit on-hand risk over time
@@ -37,9 +19,18 @@ plotLogNodeDependentSupplyLevel <- function(configFile = 'game_config.csv', logN
 #   * Better legend for colours (doesn't appear for small N)
 #   * Set alpha proportional to 1 / number of units at the level.
 #   * Extract only dependents by supply type supported. This only seems to impact grandchildren and deeper in the tree. [This seems already to work.]
-plotDependentRisk <- function(configFile, logNodeName, levels = 0) {
+plotClientRisk <- function(configFile, logNodeName, levels = 0) {
     require(ggplot2)
-    require(dplyr)
+    
+    #get the data in 'risk' terms (unit risk and lognode %onhand)
+    deps <- getLognodeClientSupply(configFile, logNodeName, levels)
+    
+    gg <- ggplot(deps, aes(x = Day, y = PpnStorageEmpty, group = UnitName, colour = level))
+    gg + geom_line(alpha = 0.3, lwd = 1) + facet_grid(SupplyType ~ .) + 
+        ggtitle(paste('Units supported by',logNodeName)) + ylab('Supply Quasi-Risk')  
+}
+
+getLognodeClientSupply <- function(configFile, logNodeName, levels = 0) {
     #read unit script
     unitScript <- readUnitScript(configFile)
     
@@ -55,16 +46,12 @@ plotDependentRisk <- function(configFile, logNodeName, levels = 0) {
     deps <- merge(deps, unitSupply, all.x = TRUE)
     deps <- merge(deps, lnSupply, all.x = TRUE)
     
-    # Now have two columns to bring together
+    # Now have two columns to bring together; take lognode if conflict
     deps$PpnStorageEmpty[is.na(deps$PpnStorageEmpty)] <- deps$RiskScore[is.na(deps$PpnStorageEmpty)]
-    deps$level <- as.factor(deps$level) #if continuous, colours are on a gradient
-    
-    gg <- ggplot(deps, aes(x = Day, y = PpnStorageEmpty, group = UnitName, colour = level))
-    gg + geom_line(alpha = 0.3, lwd = 1) + facet_grid(SupplyType ~ .) + 
-        ggtitle(paste('Units supported by',logNodeName)) + ylab('Supply Quasi-Risk')  
+    deps$level <- as.factor(deps$level) #if continuous, colours are on a gradient  
+    return(deps)
 }
 
-# TODOs
 
 findDependents <- function(supplyScript, lognode, level = 1L, maxLevel = 0L){
     rv <- subset(supplyScript, SupplyingLogNode == lognode)
