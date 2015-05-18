@@ -2,28 +2,34 @@
 
 ## Completed
 #  * Read config into a list structure
-#  * Read unit and supply type inputs
+#  * Read unit and supply type inputs 
+#  * Read unit script for supply relationships
 
 ## TODOs
-
-#   * Investigate using unit icons in charts
-#   * Finish unit script
-#   * Finish reading in other object types
+#   * Write a function to read everything into one structure.
+#   * Finish unit script - rolling joins
+#   * Finish reading in other object types - see list at bottom of file
+#   * Finish reading scripts: lognode, pipeline, arc
 #   * Read output data
+#   * Investigate using unit icons in charts
 
 readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', timestamp = date()){
     #returns a list of configuration file contents
-    
     cfg <- read.table(configFile, header = FALSE, sep = ",", fill = TRUE,
                       colClasses = rep("character", 3), col.names = c("field", "value1", "value2"))
     cfg$field <- toupper(cfg$field)
     #Replace any space with underscore
     cfg$field <- gsub(" ", "_", cfg$field, fixed = TRUE)
     
+    #Get the path to the _OUTPUT folder
+    outDir <- paste(dirname(configFile), '/', cfg$value1[cfg$field == "GAME_NAME"], 
+                    "_OUTPUT/", sep = '')
+    
     #This assumes structure of the game file is stable
     return(list(GAME_NAME = cfg$value1[cfg$field == "GAME_NAME"],
                 CASE = caseName,
                 TIMESTAMP = timestamp,
+                OUTPUT_DIR = outDir,
                 GAME_DURATION = as.numeric(cfg$value1[cfg$field == "GAME_DURATION"]),
                 GAME_START_DATE = list(month = cfg$value1[cfg$field == "GAME_START_DATE"],
                                        day =  as.numeric(cfg$value2[cfg$field == "GAME_START_DATE"])),
@@ -170,11 +176,11 @@ readUnitScript <- function(config){
     #this reassignment may not be the most efficient   
     us.supply.dt <- raw.dt[Field=="SUPPLYING_LOG_NODE"][us.supply.dt, roll = TRUE]
     us.supply.dt[, SupplyingLogNode := as.factor(V2)]
+    us.supply.dt[, SupplyType := as.factor(SupplyType)]
     us.supply.dt[, V2 := NULL]
     us.supply.dt[, Field := NULL]
     setkey(us.supply.dt, UnitName, SupplyType, Day)
-    
-         
+             
     #merge in the supply intrements without rolling, as a left outer join
     us.supply.dt[raw.dt[Field == 'SUPPLY_INCREMENT'], 
                  SupplyIncrement := as.numeric(i.V2), nomatch = NA ]
@@ -186,4 +192,33 @@ readUnitScript <- function(config){
                 ))
 }
 
+# Objects to read`
+readArcs <- function(config){}
+#consumption classes = done
+readMaps <- function(config){} #not sure this is really needed
+readNodes <- function(config){} 
+readPipelines <- function(config){}
+readPostures <- function(config){}
+readPriorityClass <- function(config){}  # this structure is the same as consumption class
+readScriptedSorties <- function(config){}
+readTransports <- function(config){}
+readWeather <- function(config){} #low priority
 
+#scripts to read
+readArcScript <- function(config){}
+readLogNodeScript <- function(config){}
+readPipelineScript <- function(config){}
+
+# Read output data
+
+#utility function to locate the output folder.
+
+readLogNodeSupplyHistory <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'LogNodeSupplyHistory.csv', sep = ''),
+             colClasses = c('integer', rep('factor', 2), rep('numeric', 13)))
+}
+
+readLogNodeTransportHistory <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'LogNodeTransportHistory.csv', sep = ''),
+             colClasses = c('integer', rep('factor', 2), rep('numeric', 6)))
+}
