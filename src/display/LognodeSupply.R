@@ -33,17 +33,18 @@ plotLogNodeDependentSupplyLevel <- function(configFile = 'game_config.csv', logN
 
 # Plot overall dependent unit on-hand risk over time
 # For all levels supplied, use levels = 0. Otherwise levels = 1 is children; 2 is children and grandchildren...
-# TODO: better legend for colours ()
+# TODOs: 
+#   * Better legend for colours (doesn't appear for small N)
+#   * Set alpha proportional to 1 / number of units at the level.
+#   * Extract only dependents by supply type supported. This only seems to impact grandchildren and deeper in the tree. [This seems already to work.]
 plotDependentRisk <- function(configFile, logNodeName, levels = 0) {
-    
-    currentLevel <- 1
     require(ggplot2)
-    
+    require(dplyr)
     #read unit script
     unitScript <- readUnitScript(configFile)
     
     #get supplying lognode relation sets for logNodeName; note this recurses over the tree
-    deps <- findDependents(unitScript$SupplyScript, logNodeName)
+    deps <- findDependents(unitScript$SupplyScript, logNodeName, maxLevel = levels)
     
     #merge deps object with risk histories; note lognodes may appear in unit
     lnSupply <-   readLogNodeSupplyHistory(configFile)
@@ -60,17 +61,18 @@ plotDependentRisk <- function(configFile, logNodeName, levels = 0) {
     
     gg <- ggplot(deps, aes(x = Day, y = PpnStorageEmpty, group = UnitName, colour = level))
     gg + geom_line(alpha = 0.3, lwd = 1) + facet_grid(SupplyType ~ .) + 
-        ggtitle(paste('Units supported by',logNodeName)) + ylab('Quasi-risk')  
+        ggtitle(paste('Units supported by',logNodeName)) + ylab('Supply Quasi-Risk')  
 }
 
-#Todo: append level on each call
+# TODOs
+
 findDependents <- function(supplyScript, lognode, level = 1L, maxLevel = 0L){
     rv <- subset(supplyScript, SupplyingLogNode == lognode)
     if(nrow(rv)){
         rv$level = level
     }
     
-    if(!maxLevel || maxLevel <= level){
+    if(!maxLevel || level < maxLevel){
         for(client in unique(rv$UnitName)){
             rv <- rbind(rv, findDependents(supplyScript, client, level + 1, maxLevel))
         }

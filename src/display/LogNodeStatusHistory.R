@@ -20,22 +20,23 @@ plotLogNodeHistory <- function(lawstCfg, logNodeName = 'New Lognode'){
     
     onhand <- ggplot(supply, aes(x = Day, y = PpnStorageFull, colour = SupplyType)) +
         geom_line(lwd = 1) + ylab('Proportion On Hand') + ggtitle(logNodeName) + 
-        theme(axis.title.x = element_blank()) + xlim(c(0, lawstCfg$GAME_DURATION - 1))
+        theme(axis.title.x = element_blank()) + xlim(c(0, lawstCfg$GAME_DURATION - 1)) + ylim(c(0,1))
         
     flow <- ggplot(supply, aes(x = Day, y = PpnFlow, colour = SupplyType)) +
         geom_line(lwd = 1) + ylab('Proportion Throughput') + 
-        theme(axis.title.x = element_blank()) + xlim(c(0, lawstCfg$GAME_DURATION - 1))
+        theme(axis.title.x = element_blank()) + xlim(c(0, lawstCfg$GAME_DURATION - 1)) +
+        ylim(c(0,1))
     
     tu <- ggplot(trans, aes(x = Day, y = Utilization, colour = TransportType)) +
         geom_line(lwd = 1) + ylab('Transport Utilization') + xlim(c(0, lawstCfg$GAME_DURATION - 1)) + 
-        scale_color_discrete( h = c(0, 360) + 45)
+        scale_color_discrete( h = c(0, 360) + 45) + ylim(c(0,1))
     
     grid.arrange(onhand, flow, tu, nrow = 3)
             
 }
 
 
-# Alternate version taking an entire game's data structure (instead of reading the files again)
+# Alternate version taking an entire game's data structure (instead of reading the files each time)
 
 # A second alternate comparing any N games' data structures 
 
