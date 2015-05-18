@@ -9,6 +9,7 @@
 #   * Write a function to read everything into one structure.
 #   * Finish unit script - rolling joins
 #   * Finish reading in other object types - see list at bottom of file
+#   * Add game name, case name and timestamp to all data frames
 #   * Finish reading scripts: lognode, pipeline, arc
 #   * Read output data
 #   * Investigate using unit icons in charts
@@ -221,4 +222,9 @@ readLogNodeSupplyHistory <- function(config){
 readLogNodeTransportHistory <- function(config){
     read.csv(paste(config$OUTPUT_DIR, 'LogNodeTransportHistory.csv', sep = ''),
              colClasses = c('integer', rep('factor', 2), rep('numeric', 6)))
+}
+
+readUnitSupplyHistory <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'UnitHistory.csv', sep = ''),
+             colClasses = c('integer', rep('factor',2), 'character', rep('numeric', 14)))
 }
