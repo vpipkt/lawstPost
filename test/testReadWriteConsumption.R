@@ -1,16 +1,16 @@
-# test consumption class reading and writing
+#Test consumption class reading
 
+#set working dir to 
 source('src/readWriteConsumption.R')
 
-#working from relative directory of the example game exe
-setwd('exampleGames/k/exe')
-kconfig <- readLawstConfig('../_kdemo.lconfig')
-kcc <- readConsumptionClass(kconfig)
+# Read then write the CC with no changes
 
-summary(kcc)
+setwd('exampleGames/K/exe')
+k <- readLawstConfig("../_kdemo.lconfig")
 
-head(kcc, 10)
+cc1 <- readConsumptionClass(k)
+View(cc1)
 
-kcc$Description[2] <- "Stryker bde class jtb 20150505"
-kcc$RequirementQty[4] <- 44444
+writeConsumptionClass(cc1)
 
+# Externally diff the two files

@@ -66,20 +66,22 @@ readCCLine <- function(conn){
 # The data frame is as produced by readConsumptionClass
 # The csv file is to be read by LAWST
 writeConsumptionClass <- function(dataFrame, path = 'tidyCC.csv'){
-    #JTB 20150505 rough prototype
     conn <- file(path, open = 'w')
-    writeLines('header')
-    ccs <- unique(df$cc)
+    writeLines('Name,Description,{SupplyType,Posture,RequirementQty}', conn)
+    ccs <- unique(dataFrame$ConsumptionClass)
     for(c in ccs){
-        sub <- subset(df, CC == c)
-        line <- c() subset$cc[1], sub$desc[1]
-        for i in subset rows{
-            line <- c(line, $supply, $pos, $amt)
-        }
-        writeLines(line, conn, sep = ',') #writes an extra comma
-        #get the return line
-        writeLines('', conn)
+        sub <- subset(dataFrame, ConsumptionClass == c)
+        line <- c(as.character(sub$ConsumptionClass[1]), 
+                  as.character(sub$Description[1]))
         
+        for(i in seq_len(nrow(sub))){
+            if(!(is.na(sub$RequirementQty[i])))
+                line <- c(line, 
+                      as.character(sub$SupplyType[i]), 
+                      as.character(sub$Posture[i]),
+                      sub$RequirementQty[i])
+        }
+        writeLines(paste(line, collapse = ','), conn) 
     }
     close(conn)
 }
