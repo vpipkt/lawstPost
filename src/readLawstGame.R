@@ -94,7 +94,7 @@ readUnitScript <- function(config){
     #assume reading units and supply types is cheap
     u <- readUnit(config)
     st <- readSupplyTypes(config)
-    nDay <- config$GAME_DURATION
+    nDay <- config$GAME_DURATION - 1
     
     # This function will return a list of two data frames. One has supply-dependent 
     #   fields. This is the other.
@@ -226,5 +226,5 @@ readLogNodeTransportHistory <- function(config){
 
 readUnitSupplyHistory <- function(config){
     read.csv(paste(config$OUTPUT_DIR, 'UnitHistory.csv', sep = ''),
-             colClasses = c('integer', rep('factor',2), 'character', rep('numeric', 14)))
+             colClasses = c('integer', rep('factor',2), 'character', rep('numeric', 16)))
 }

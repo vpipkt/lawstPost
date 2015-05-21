@@ -1,4 +1,4 @@
 Name,Description,LLLat,LLLong,URLat,URLong,ImageFileName
-South Korea,,34.0935,123.5,37.63,131.68,..\graphics\sk_map.png
-Inset,Inset political / street map of area of operations.,34.88,127.35,36.7,130.68,..\graphics\inset_map.png
-Physical Inset,,34.95,127.55,36.8,130.4,..\graphics\inset_physical.png
+"South Korea","",34.0935,123.5,37.63,131.68,"..\graphics\sk_map.png"
+"Inset","Inset political / street map of area of operations.",34.88,127.35,36.7,130.68,"..\graphics\inset_map.png"
+"Physical Inset","",34.95,127.55,36.8,130.4,"..\graphics\inset_physical.png"

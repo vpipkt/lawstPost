@@ -1,23 +1,29 @@
-Game Name,Korea unclass demo
-Game Duration,20
-Game Start Date,JUL,2
-Measurement System,METRIC
-Supply Adjudication Methodology,INTEGER_BASE
-Highway Reach,5
-Supply Types,..\\DATA\\supplyTypes.csv
-Postures,..\\DATA\\postures.csv
-Consumption Classes,..\\DATA\\consumptionClasses.csv
-Prioritization Classes,..\\DATA\\prioritizationClasses.csv
-Maps,..\\DATA\\maps.csv
-Nodes,..\\DATA\\nodes.csv
-Arcs,..\\DATA\\arcs.csv
-Arc Scripts,..\\DATA\\arcScripts.csv
-Transportation Assets,..\\DATA\\transportationAssetTypes.csv
-Transportation Mode Exclusions,..\\DATA\\TransportationAssetModeExclusions.csv
-Units,..\\DATA\\units.csv
-Unit Scripts,..\\DATA\\unitScripts.csv
-Log Node Scripts,..\DATA\logNodeScripts.csv
-Pipelines,..\\DATA\\pipelines.csv
-Pipeline Scripts,..\DATA\pipelineScripts.csv
-Weather,..\\DATA\\weather.csv
-Scripted Sorties,..\\DATA\\scriptedSorties.csv
+GAME_NAME,"Korea unclass demo"
+GAME_DURATION,20
+GAME_START_DATE,JUL,2
+VOLUME_UOM,LITER
+MASS_UOM,KILOGRAM
+DISTANCE_UOM,KILOMETER
+SUPPLY_ADJUDICATION_METHODOLOGY,INTEGER_BASE
+HIGHWAY_REACH,5
+ZERO_RISK_UTILIZATION,0
+GROUND_ESCORT_FUEL_RATE,0
+SEA_ESCORT_FUEL_RATE,0
+AIR_ESCORT_FUEL_RATE,0
+SUPPLY_TYPES,..\DATA\supplyTypes.csv
+POSTURES,..\DATA\postures.csv
+CONSUMPTION_CLASSES,..\DATA\consumptionClasses.csv
+PRIORITIZATION_CLASSES,..\DATA\prioritizationClasses.csv
+MAPS,..\DATA\maps.csv
+NODES,..\DATA\nodes.csv
+ARCS,..\DATA\arcs.csv
+ARC_SCRIPTS,..\DATA\arcScripts.csv
+TRANSPORTATION_ASSETS,..\DATA\transportationAssetTypes.csv
+TRANSPORTATION_MODE_EXCLUSIONS,..\DATA\TransportationAssetModeExclusions.csv
+UNITS,..\DATA\units.csv
+UNIT_SCRIPTS,..\DATA\unitScripts.csv
+LOG_NODE_SCRIPTS,..\DATA\logNodeScripts.csv
+PIPELINES,..\DATA\pipelines.csv
+PIPELINE_SCRIPTS,..\DATA\pipelineScripts.csv
+WEATHER,..\DATA\weather.csv
+SCRIPTED_SORTIES,..\DATA\scriptedSorties.csv

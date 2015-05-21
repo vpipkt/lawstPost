@@ -1,6 +1,6 @@
 Arc Name,Day,Field,Value
-55-no,0,TRAFFIC_CAPACITY,325000
-sea lane bc,0,IS OPEN,FALSE
-sea lane into Pohang,0,IS OPEN,FALSE
-northern sea lane,0,IS OPEN,FALSE
-sea lane into north of pohang,0,IS OPEN,FALSE
+"55-no",0,TRAFFIC_CAPACITY,325000
+"sea lane bc",0,IS OPEN,False
+"sea lane into Pohang",0,IS OPEN,False
+"northern sea lane",0,IS OPEN,False
+"sea lane into north of pohang",0,IS OPEN,False

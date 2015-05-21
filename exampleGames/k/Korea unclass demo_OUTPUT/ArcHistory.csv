@@ -391,8 +391,8 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "35cd",6,True,Infinity,425254.08,Infinity,,0
 "55-Gyeongbuk",6,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",6,True,Infinity,0,Infinity,,0
-"20 west Pohang",6,True,Infinity,176282.318355799,Infinity,,0
-"20-bc",6,True,Infinity,176282.318355799,Infinity,,0
+"20 west Pohang",6,True,Infinity,421681.234227513,Infinity,,0
+"20-bc",6,True,Infinity,421681.234227513,Infinity,,0
 "20-35",6,True,Infinity,0,Infinity,,0
 "20-daegu",6,True,Infinity,0,Infinity,,0
 "Pohang north",6,True,Infinity,0,Infinity,,0
@@ -477,7 +477,7 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",7,False,Infinity,0,Infinity,,0
 "northern sea lane",7,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",7,False,Infinity,0,Infinity,,0
-"Yeongchon north",7,True,Infinity,205182.2,Infinity,,0
+"Yeongchon north",7,True,Infinity,199895.6,Infinity,,0
 "Yeongchon south",7,True,Infinity,0,Infinity,,0
 "55-ab",8,True,Infinity,0,Infinity,,0
 "55-bc",8,True,Infinity,565400,Infinity,,0
@@ -511,9 +511,9 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "35cd",8,True,Infinity,365030.4,Infinity,,0
 "55-Gyeongbuk",8,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",8,True,Infinity,0,Infinity,,0
-"20 west Pohang",8,True,Infinity,297109.2,Infinity,,0
-"20-bc",8,True,Infinity,297109.2,Infinity,,0
-"20-35",8,True,Infinity,297109.2,Infinity,,0
+"20 west Pohang",8,True,Infinity,314557.6,Infinity,,0
+"20-bc",8,True,Infinity,314557.6,Infinity,,0
+"20-35",8,True,Infinity,314557.6,Infinity,,0
 "20-daegu",8,True,Infinity,0,Infinity,,0
 "Pohang north",8,True,Infinity,0,Infinity,,0
 "Ulsan-1",8,True,Infinity,0,Infinity,,0
@@ -537,20 +537,20 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",8,False,Infinity,0,Infinity,,0
 "northern sea lane",8,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",8,False,Infinity,0,Infinity,,0
-"Yeongchon north",8,True,Infinity,455368,Infinity,,0
+"Yeongchon north",8,True,Infinity,469658,Infinity,,0
 "Yeongchon south",8,True,Infinity,0,Infinity,,0
 "55-ab",9,True,Infinity,0,Infinity,,0
-"55-bc",9,True,Infinity,0,Infinity,,0
-"55-cd",9,True,Infinity,0,Infinity,,0
-"55-de",9,True,Infinity,0,Infinity,,0
-"55-ef",9,True,Infinity,0,Infinity,,0
-"55fg",9,True,Infinity,0,Infinity,,0
-"55-gh",9,True,Infinity,0,Infinity,,0
-"55-hj",9,True,Infinity,0,Infinity,,0
-"55-jk",9,True,Infinity,0,Infinity,,0
-"55-kl",9,True,Infinity,0,Infinity,,0
-"55-lm",9,True,Infinity,0,Infinity,,0
-"55 west of Daegu",9,True,Infinity,0,Infinity,,0
+"55-bc",9,True,Infinity,81600,Infinity,,0
+"55-cd",9,True,Infinity,81600,Infinity,,0
+"55-de",9,True,Infinity,81600,Infinity,,0
+"55-ef",9,True,Infinity,81600,Infinity,,0
+"55fg",9,True,Infinity,81600,Infinity,,0
+"55-gh",9,True,Infinity,81600,Infinity,,0
+"55-hj",9,True,Infinity,81600,Infinity,,0
+"55-jk",9,True,Infinity,81600,Infinity,,0
+"55-kl",9,True,Infinity,81600,Infinity,,0
+"55-lm",9,True,Infinity,81600,Infinity,,0
+"55 west of Daegu",9,True,Infinity,81600,Infinity,,0
 "55 east of Daegu",9,True,Infinity,647000,Infinity,,0
 "55-no",9,True,325000,0,325000,0,0
 "55-op",9,True,Infinity,0,Infinity,,0
@@ -564,17 +564,17 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "10-a",9,True,Infinity,0,Infinity,,0
 "10-b",9,True,Infinity,0,Infinity,,0
 "10-c",9,True,Infinity,0,Infinity,,0
-"Andong-55",9,True,Infinity,0,Infinity,,0
-"35 east of Andong",9,True,Infinity,915400,Infinity,,0
-"35ab",9,True,Infinity,915400,Infinity,,0
-"35bc",9,True,Infinity,915400,Infinity,,0
-"35cd",9,True,Infinity,915400,Infinity,,0
+"Andong-55",9,True,Infinity,81600,Infinity,,0
+"35 east of Andong",9,True,Infinity,819520,Infinity,,0
+"35ab",9,True,Infinity,819520,Infinity,,0
+"35bc",9,True,Infinity,819520,Infinity,,0
+"35cd",9,True,Infinity,819520,Infinity,,0
 "55-Gyeongbuk",9,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",9,True,Infinity,0,Infinity,,0
 "20 west Pohang",9,True,Infinity,285570,Infinity,,0
 "20-bc",9,True,Infinity,285570,Infinity,,0
 "20-35",9,True,Infinity,285570,Infinity,,0
-"20-daegu",9,True,Infinity,647000,Infinity,,0
+"20-daegu",9,True,Infinity,565400,Infinity,,0
 "Pohang north",9,True,Infinity,0,Infinity,,0
 "Ulsan-1",9,True,Infinity,0,Infinity,,0
 "55-1",9,True,Infinity,0,Infinity,,0
@@ -597,8 +597,8 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",9,False,Infinity,0,Infinity,,0
 "northern sea lane",9,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",9,False,Infinity,0,Infinity,,0
-"Yeongchon north",9,True,Infinity,719496,Infinity,,0
-"Yeongchon south",9,True,Infinity,719496,Infinity,,0
+"Yeongchon north",9,True,Infinity,792106.56,Infinity,,0
+"Yeongchon south",9,True,Infinity,792106.56,Infinity,,0
 "55-ab",10,True,Infinity,0,Infinity,,0
 "55-bc",10,True,Infinity,0,Infinity,,0
 "55-cd",10,True,Infinity,0,Infinity,,0
@@ -625,10 +625,10 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "10-b",10,True,Infinity,0,Infinity,,0
 "10-c",10,True,Infinity,0,Infinity,,0
 "Andong-55",10,True,Infinity,0,Infinity,,0
-"35 east of Andong",10,True,Infinity,871255.797579262,Infinity,,0
-"35ab",10,True,Infinity,871255.797579262,Infinity,,0
-"35bc",10,True,Infinity,871255.797579262,Infinity,,0
-"35cd",10,True,Infinity,871255.797579262,Infinity,,0
+"35 east of Andong",10,True,Infinity,889272.054781788,Infinity,,0
+"35ab",10,True,Infinity,889272.054781788,Infinity,,0
+"35bc",10,True,Infinity,889272.054781788,Infinity,,0
+"35cd",10,True,Infinity,889272.054781788,Infinity,,0
 "55-Gyeongbuk",10,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",10,True,Infinity,0,Infinity,,0
 "20 west Pohang",10,True,Infinity,285570,Infinity,,0
@@ -639,7 +639,7 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "Ulsan-1",10,True,Infinity,0,Infinity,,0
 "55-1",10,True,Infinity,0,Infinity,,0
 "1-ab",10,True,Infinity,0,Infinity,,0
-"1-bc",10,True,Infinity,201567.290615344,Infinity,,0
+"1-bc",10,True,Infinity,201791.033412818,Infinity,,0
 "1-cd",10,True,Infinity,0,Infinity,,0
 "1-de",10,True,Infinity,0,Infinity,,0
 "1-ef",10,True,Infinity,0,Infinity,,0
@@ -657,8 +657,8 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",10,False,Infinity,0,Infinity,,0
 "northern sea lane",10,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",10,False,Infinity,0,Infinity,,0
-"Yeongchon north",10,True,Infinity,366792.890615344,Infinity,,0
-"Yeongchon south",10,True,Infinity,201567.290615344,Infinity,,0
+"Yeongchon north",10,True,Infinity,367016.633412818,Infinity,,0
+"Yeongchon south",10,True,Infinity,201791.033412818,Infinity,,0
 "55-ab",11,True,Infinity,0,Infinity,,0
 "55-bc",11,True,Infinity,0,Infinity,,0
 "55-cd",11,True,Infinity,0,Infinity,,0
@@ -685,10 +685,10 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "10-b",11,True,Infinity,0,Infinity,,0
 "10-c",11,True,Infinity,0,Infinity,,0
 "Andong-55",11,True,Infinity,0,Infinity,,0
-"35 east of Andong",11,True,Infinity,815079.133026432,Infinity,,0
-"35ab",11,True,Infinity,815079.133026432,Infinity,,0
-"35bc",11,True,Infinity,815079.133026432,Infinity,,0
-"35cd",11,True,Infinity,815079.133026432,Infinity,,0
+"35 east of Andong",11,True,Infinity,851313.435823906,Infinity,,0
+"35ab",11,True,Infinity,851313.435823906,Infinity,,0
+"35bc",11,True,Infinity,851313.435823906,Infinity,,0
+"35cd",11,True,Infinity,851313.435823906,Infinity,,0
 "55-Gyeongbuk",11,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",11,True,Infinity,0,Infinity,,0
 "20 west Pohang",11,True,Infinity,285570,Infinity,,0
@@ -699,8 +699,8 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "Ulsan-1",11,True,Infinity,0,Infinity,,0
 "55-1",11,True,Infinity,0,Infinity,,0
 "1-ab",11,True,Infinity,0,Infinity,,0
-"1-bc",11,True,Infinity,473595.109384656,Infinity,,0
-"1-cd",11,True,Infinity,473595.109384656,Infinity,,0
+"1-bc",11,True,Infinity,473371.366587182,Infinity,,0
+"1-cd",11,True,Infinity,473371.366587182,Infinity,,0
 "1-de",11,True,Infinity,182240,Infinity,,0
 "1-ef",11,True,Infinity,182240,Infinity,,0
 "Yangsan-55",11,True,Infinity,182240,Infinity,,0
@@ -717,8 +717,8 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",11,False,Infinity,0,Infinity,,0
 "northern sea lane",11,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",11,False,Infinity,0,Infinity,,0
-"Yeongchon north",11,True,Infinity,638820.709384656,Infinity,,0
-"Yeongchon south",11,True,Infinity,473595.109384656,Infinity,,0
+"Yeongchon north",11,True,Infinity,638596.966587182,Infinity,,0
+"Yeongchon south",11,True,Infinity,473371.366587182,Infinity,,0
 "55-ab",12,True,Infinity,0,Infinity,,0
 "55-bc",12,True,Infinity,0,Infinity,,0
 "55-cd",12,True,Infinity,0,Infinity,,0
@@ -745,10 +745,10 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "10-b",12,True,Infinity,0,Infinity,,0
 "10-c",12,True,Infinity,0,Infinity,,0
 "Andong-55",12,True,Infinity,0,Infinity,,0
-"35 east of Andong",12,True,Infinity,787345.587538154,Infinity,,0
-"35ab",12,True,Infinity,787345.587538154,Infinity,,0
-"35bc",12,True,Infinity,787345.587538154,Infinity,,0
-"35cd",12,True,Infinity,787345.587538154,Infinity,,0
+"35 east of Andong",12,True,Infinity,787121.84474068,Infinity,,0
+"35ab",12,True,Infinity,787121.84474068,Infinity,,0
+"35bc",12,True,Infinity,787121.84474068,Infinity,,0
+"35cd",12,True,Infinity,787121.84474068,Infinity,,0
 "55-Gyeongbuk",12,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",12,True,Infinity,0,Infinity,,0
 "20 west Pohang",12,True,Infinity,285570,Infinity,,0
@@ -840,35 +840,35 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "Yeongchon north",13,True,Infinity,550585.2,Infinity,,0
 "Yeongchon south",13,True,Infinity,385359.6,Infinity,,0
 "55-ab",14,True,Infinity,0,Infinity,,0
-"55-bc",14,True,Infinity,0,Infinity,,0
-"55-cd",14,True,Infinity,0,Infinity,,0
-"55-de",14,True,Infinity,0,Infinity,,0
-"55-ef",14,True,Infinity,0,Infinity,,0
-"55fg",14,True,Infinity,0,Infinity,,0
-"55-gh",14,True,Infinity,0,Infinity,,0
-"55-hj",14,True,Infinity,0,Infinity,,0
-"55-jk",14,True,Infinity,0,Infinity,,0
-"55-kl",14,True,Infinity,0,Infinity,,0
-"55-lm",14,True,Infinity,0,Infinity,,0
-"55 west of Daegu",14,True,Infinity,0,Infinity,,0
-"55 east of Daegu",14,True,Infinity,325000,Infinity,,0
+"55-bc",14,True,Infinity,119520,Infinity,,0
+"55-cd",14,True,Infinity,119520,Infinity,,0
+"55-de",14,True,Infinity,119520,Infinity,,0
+"55-ef",14,True,Infinity,119520,Infinity,,0
+"55fg",14,True,Infinity,119520,Infinity,,0
+"55-gh",14,True,Infinity,119520,Infinity,,0
+"55-hj",14,True,Infinity,119520,Infinity,,0
+"55-jk",14,True,Infinity,119520,Infinity,,0
+"55-kl",14,True,Infinity,119520,Infinity,,0
+"55-lm",14,True,Infinity,119520,Infinity,,0
+"55 west of Daegu",14,True,Infinity,119520,Infinity,,0
+"55 east of Daegu",14,True,Infinity,444520,Infinity,,0
 "55-no",14,True,325000,325000,0,1,1
 "55-op",14,True,Infinity,325000,Infinity,,0
 "55-pq",14,True,Infinity,325000,Infinity,,0
 "55-qr",14,True,Infinity,325000,Infinity,,0
 "55-rs",14,True,Infinity,325000,Infinity,,0
-"55-st",14,True,Infinity,147744,Infinity,,0
-"55-tu",14,True,Infinity,147744,Infinity,,0
-"55-uv",14,True,Infinity,147744,Infinity,,0
+"55-st",14,True,Infinity,267264,Infinity,,0
+"55-tu",14,True,Infinity,267264,Infinity,,0
+"55-uv",14,True,Infinity,267264,Infinity,,0
 "55 near Gimhae",14,True,Infinity,0,Infinity,,0
 "10-a",14,True,Infinity,0,Infinity,,0
 "10-b",14,True,Infinity,0,Infinity,,0
 "10-c",14,True,Infinity,0,Infinity,,0
-"Andong-55",14,True,Infinity,0,Infinity,,0
-"35 east of Andong",14,True,Infinity,791891.19915756,Infinity,,0
-"35ab",14,True,Infinity,791891.19915756,Infinity,,0
-"35bc",14,True,Infinity,791891.19915756,Infinity,,0
-"35cd",14,True,Infinity,791891.19915756,Infinity,,0
+"Andong-55",14,True,Infinity,119520,Infinity,,0
+"35 east of Andong",14,True,Infinity,594400,Infinity,,0
+"35ab",14,True,Infinity,594400,Infinity,,0
+"35bc",14,True,Infinity,594400,Infinity,,0
+"35cd",14,True,Infinity,594400,Infinity,,0
 "55-Gyeongbuk",14,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",14,True,Infinity,0,Infinity,,0
 "20 west Pohang",14,True,Infinity,285570,Infinity,,0
@@ -877,13 +877,13 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "20-daegu",14,True,Infinity,325000,Infinity,,0
 "Pohang north",14,True,Infinity,0,Infinity,,0
 "Ulsan-1",14,True,Infinity,0,Infinity,,0
-"55-1",14,True,Infinity,0,Infinity,,0
-"1-ab",14,True,Infinity,0,Infinity,,0
-"1-bc",14,True,Infinity,440079.6,Infinity,,0
-"1-cd",14,True,Infinity,440079.6,Infinity,,0
-"1-de",14,True,Infinity,440079.6,Infinity,,0
-"1-ef",14,True,Infinity,147744,Infinity,,0
-"Yangsan-55",14,True,Infinity,147744,Infinity,,0
+"55-1",14,True,Infinity,119520,Infinity,,0
+"1-ab",14,True,Infinity,119520,Infinity,,0
+"1-bc",14,True,Infinity,559599.6,Infinity,,0
+"1-cd",14,True,Infinity,559599.6,Infinity,,0
+"1-de",14,True,Infinity,559599.6,Infinity,,0
+"1-ef",14,True,Infinity,267264,Infinity,,0
+"Yangsan-55",14,True,Infinity,267264,Infinity,,0
 "Pohang Northwest",14,True,Infinity,0,Infinity,,0
 "Busan-Yangsan",14,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",14,True,Infinity,0,Infinity,,0
@@ -900,35 +900,35 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "Yeongchon north",14,True,Infinity,605305.2,Infinity,,0
 "Yeongchon south",14,True,Infinity,440079.6,Infinity,,0
 "55-ab",15,True,Infinity,0,Infinity,,0
-"55-bc",15,True,Infinity,0,Infinity,,0
-"55-cd",15,True,Infinity,0,Infinity,,0
-"55-de",15,True,Infinity,0,Infinity,,0
-"55-ef",15,True,Infinity,0,Infinity,,0
-"55fg",15,True,Infinity,0,Infinity,,0
-"55-gh",15,True,Infinity,0,Infinity,,0
-"55-hj",15,True,Infinity,0,Infinity,,0
-"55-jk",15,True,Infinity,0,Infinity,,0
-"55-kl",15,True,Infinity,0,Infinity,,0
-"55-lm",15,True,Infinity,0,Infinity,,0
-"55 west of Daegu",15,True,Infinity,0,Infinity,,0
-"55 east of Daegu",15,True,Infinity,325000,Infinity,,0
+"55-bc",15,True,Infinity,39840,Infinity,,0
+"55-cd",15,True,Infinity,39840,Infinity,,0
+"55-de",15,True,Infinity,39840,Infinity,,0
+"55-ef",15,True,Infinity,39840,Infinity,,0
+"55fg",15,True,Infinity,39840,Infinity,,0
+"55-gh",15,True,Infinity,39840,Infinity,,0
+"55-hj",15,True,Infinity,39840,Infinity,,0
+"55-jk",15,True,Infinity,39840,Infinity,,0
+"55-kl",15,True,Infinity,39840,Infinity,,0
+"55-lm",15,True,Infinity,39840,Infinity,,0
+"55 west of Daegu",15,True,Infinity,39840,Infinity,,0
+"55 east of Daegu",15,True,Infinity,364840,Infinity,,0
 "55-no",15,True,325000,325000,0,1,1
 "55-op",15,True,Infinity,325000,Infinity,,0
 "55-pq",15,True,Infinity,325000,Infinity,,0
 "55-qr",15,True,Infinity,325000,Infinity,,0
 "55-rs",15,True,Infinity,325000,Infinity,,0
 "55-st",15,True,Infinity,325000,Infinity,,0
-"55-tu",15,True,Infinity,111264,Infinity,,0
-"55-uv",15,True,Infinity,111264,Infinity,,0
+"55-tu",15,True,Infinity,151104,Infinity,,0
+"55-uv",15,True,Infinity,151104,Infinity,,0
 "55 near Gimhae",15,True,Infinity,0,Infinity,,0
 "10-a",15,True,Infinity,0,Infinity,,0
 "10-b",15,True,Infinity,0,Infinity,,0
 "10-c",15,True,Infinity,0,Infinity,,0
-"Andong-55",15,True,Infinity,0,Infinity,,0
-"35 east of Andong",15,True,Infinity,811545.678157226,Infinity,,0
-"35ab",15,True,Infinity,811545.678157226,Infinity,,0
-"35bc",15,True,Infinity,811545.678157226,Infinity,,0
-"35cd",15,True,Infinity,811545.678157226,Infinity,,0
+"Andong-55",15,True,Infinity,39840,Infinity,,0
+"35 east of Andong",15,True,Infinity,731745.678157226,Infinity,,0
+"35ab",15,True,Infinity,731745.678157226,Infinity,,0
+"35bc",15,True,Infinity,731745.678157226,Infinity,,0
+"35cd",15,True,Infinity,731745.678157226,Infinity,,0
 "55-Gyeongbuk",15,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",15,True,Infinity,0,Infinity,,0
 "20 west Pohang",15,True,Infinity,285570,Infinity,,0
@@ -937,13 +937,13 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "20-daegu",15,True,Infinity,325000,Infinity,,0
 "Pohang north",15,True,Infinity,0,Infinity,,0
 "Ulsan-1",15,True,Infinity,0,Infinity,,0
-"55-1",15,True,Infinity,0,Infinity,,0
-"1-ab",15,True,Infinity,0,Infinity,,0
-"1-bc",15,True,Infinity,403599.6,Infinity,,0
-"1-cd",15,True,Infinity,403599.6,Infinity,,0
-"1-de",15,True,Infinity,403599.6,Infinity,,0
-"1-ef",15,True,Infinity,111264,Infinity,,0
-"Yangsan-55",15,True,Infinity,111264,Infinity,,0
+"55-1",15,True,Infinity,39840,Infinity,,0
+"1-ab",15,True,Infinity,39840,Infinity,,0
+"1-bc",15,True,Infinity,443439.6,Infinity,,0
+"1-cd",15,True,Infinity,443439.6,Infinity,,0
+"1-de",15,True,Infinity,443439.6,Infinity,,0
+"1-ef",15,True,Infinity,151104,Infinity,,0
+"Yangsan-55",15,True,Infinity,151104,Infinity,,0
 "Pohang Northwest",15,True,Infinity,0,Infinity,,0
 "Busan-Yangsan",15,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",15,True,Infinity,0,Infinity,,0
@@ -960,18 +960,18 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "Yeongchon north",15,True,Infinity,568825.2,Infinity,,0
 "Yeongchon south",15,True,Infinity,403599.6,Infinity,,0
 "55-ab",16,True,Infinity,0,Infinity,,0
-"55-bc",16,True,Infinity,0,Infinity,,0
-"55-cd",16,True,Infinity,0,Infinity,,0
-"55-de",16,True,Infinity,0,Infinity,,0
-"55-ef",16,True,Infinity,0,Infinity,,0
-"55fg",16,True,Infinity,0,Infinity,,0
-"55-gh",16,True,Infinity,0,Infinity,,0
-"55-hj",16,True,Infinity,0,Infinity,,0
-"55-jk",16,True,Infinity,0,Infinity,,0
-"55-kl",16,True,Infinity,0,Infinity,,0
-"55-lm",16,True,Infinity,0,Infinity,,0
-"55 west of Daegu",16,True,Infinity,0,Infinity,,0
-"55 east of Daegu",16,True,Infinity,325000,Infinity,,0
+"55-bc",16,True,Infinity,39840,Infinity,,0
+"55-cd",16,True,Infinity,39840,Infinity,,0
+"55-de",16,True,Infinity,39840,Infinity,,0
+"55-ef",16,True,Infinity,39840,Infinity,,0
+"55fg",16,True,Infinity,39840,Infinity,,0
+"55-gh",16,True,Infinity,39840,Infinity,,0
+"55-hj",16,True,Infinity,39840,Infinity,,0
+"55-jk",16,True,Infinity,39840,Infinity,,0
+"55-kl",16,True,Infinity,39840,Infinity,,0
+"55-lm",16,True,Infinity,39840,Infinity,,0
+"55 west of Daegu",16,True,Infinity,39840,Infinity,,0
+"55 east of Daegu",16,True,Infinity,364840,Infinity,,0
 "55-no",16,True,325000,325000,0,1,1
 "55-op",16,True,Infinity,325000,Infinity,,0
 "55-pq",16,True,Infinity,325000,Infinity,,0
@@ -979,31 +979,31 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "55-rs",16,True,Infinity,325000,Infinity,,0
 "55-st",16,True,Infinity,325000,Infinity,,0
 "55-tu",16,True,Infinity,325000,Infinity,,0
-"55-uv",16,True,Infinity,93024,Infinity,,0
+"55-uv",16,True,Infinity,132864,Infinity,,0
 "55 near Gimhae",16,True,Infinity,0,Infinity,,0
 "10-a",16,True,Infinity,0,Infinity,,0
 "10-b",16,True,Infinity,0,Infinity,,0
 "10-c",16,True,Infinity,0,Infinity,,0
-"Andong-55",16,True,Infinity,0,Infinity,,0
-"35 east of Andong",16,True,Infinity,794645.111589009,Infinity,,0
-"35ab",16,True,Infinity,794645.111589009,Infinity,,0
-"35bc",16,True,Infinity,794645.111589009,Infinity,,0
-"35cd",16,True,Infinity,794645.111589009,Infinity,,0
+"Andong-55",16,True,Infinity,39840,Infinity,,0
+"35 east of Andong",16,True,Infinity,714845.111589009,Infinity,,0
+"35ab",16,True,Infinity,714845.111589009,Infinity,,0
+"35bc",16,True,Infinity,714845.111589009,Infinity,,0
+"35cd",16,True,Infinity,714845.111589009,Infinity,,0
 "55-Gyeongbuk",16,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",16,True,Infinity,0,Infinity,,0
-"20 west Pohang",16,True,Infinity,12480.0406388177,Infinity,,0
-"20-bc",16,True,Infinity,12480.0406388177,Infinity,,0
-"20-35",16,True,Infinity,12480.0406388177,Infinity,,0
+"20 west Pohang",16,True,Infinity,6396.81750652842,Infinity,,0
+"20-bc",16,True,Infinity,6396.81750652842,Infinity,,0
+"20-35",16,True,Infinity,6396.81750652842,Infinity,,0
 "20-daegu",16,True,Infinity,325000,Infinity,,0
 "Pohang north",16,True,Infinity,0,Infinity,,0
 "Ulsan-1",16,True,Infinity,0,Infinity,,0
-"55-1",16,True,Infinity,0,Infinity,,0
-"1-ab",16,True,Infinity,0,Infinity,,0
-"1-bc",16,True,Infinity,325213.6,Infinity,,0
-"1-cd",16,True,Infinity,325213.6,Infinity,,0
-"1-de",16,True,Infinity,325213.6,Infinity,,0
-"1-ef",16,True,Infinity,325213.6,Infinity,,0
-"Yangsan-55",16,True,Infinity,93024,Infinity,,0
+"55-1",16,True,Infinity,39840,Infinity,,0
+"1-ab",16,True,Infinity,39840,Infinity,,0
+"1-bc",16,True,Infinity,365053.6,Infinity,,0
+"1-cd",16,True,Infinity,365053.6,Infinity,,0
+"1-de",16,True,Infinity,365053.6,Infinity,,0
+"1-ef",16,True,Infinity,365053.6,Infinity,,0
+"Yangsan-55",16,True,Infinity,132864,Infinity,,0
 "Pohang Northwest",16,True,Infinity,0,Infinity,,0
 "Busan-Yangsan",16,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",16,True,Infinity,0,Infinity,,0
@@ -1017,53 +1017,53 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",16,False,Infinity,0,Infinity,,0
 "northern sea lane",16,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",16,False,Infinity,0,Infinity,,0
-"Yeongchon north",16,True,Infinity,337693.640638818,Infinity,,0
+"Yeongchon north",16,True,Infinity,331610.417506528,Infinity,,0
 "Yeongchon south",16,True,Infinity,325213.6,Infinity,,0
 "55-ab",17,True,Infinity,0,Infinity,,0
-"55-bc",17,True,Infinity,0,Infinity,,0
-"55-cd",17,True,Infinity,0,Infinity,,0
-"55-de",17,True,Infinity,0,Infinity,,0
-"55-ef",17,True,Infinity,0,Infinity,,0
-"55fg",17,True,Infinity,0,Infinity,,0
-"55-gh",17,True,Infinity,0,Infinity,,0
-"55-hj",17,True,Infinity,0,Infinity,,0
-"55-jk",17,True,Infinity,0,Infinity,,0
-"55-kl",17,True,Infinity,0,Infinity,,0
-"55-lm",17,True,Infinity,0,Infinity,,0
-"55 west of Daegu",17,True,Infinity,0,Infinity,,0
-"55 east of Daegu",17,True,Infinity,325000,Infinity,,0
-"55-no",17,True,325000,325000,0,1,1
-"55-op",17,True,Infinity,325000,Infinity,,0
-"55-pq",17,True,Infinity,325000,Infinity,,0
-"55-qr",17,True,Infinity,785822.330182838,Infinity,,0
-"55-rs",17,True,Infinity,785822.330182838,Infinity,,0
-"55-st",17,True,Infinity,785822.330182838,Infinity,,0
-"55-tu",17,True,Infinity,785822.330182838,Infinity,,0
-"55-uv",17,True,Infinity,785822.330182838,Infinity,,0
+"55-bc",17,True,Infinity,39840,Infinity,,0
+"55-cd",17,True,Infinity,39840,Infinity,,0
+"55-de",17,True,Infinity,39840,Infinity,,0
+"55-ef",17,True,Infinity,39840,Infinity,,0
+"55fg",17,True,Infinity,39840,Infinity,,0
+"55-gh",17,True,Infinity,39840,Infinity,,0
+"55-hj",17,True,Infinity,39840,Infinity,,0
+"55-jk",17,True,Infinity,39840,Infinity,,0
+"55-kl",17,True,Infinity,39840,Infinity,,0
+"55-lm",17,True,Infinity,39840,Infinity,,0
+"55 west of Daegu",17,True,Infinity,39840,Infinity,,0
+"55 east of Daegu",17,True,Infinity,242732.865071827,Infinity,,0
+"55-no",17,True,325000,242732.865071827,82267.1349281731,0.74687035406716,0.74687035406716
+"55-op",17,True,Infinity,242732.865071827,Infinity,,0
+"55-pq",17,True,Infinity,242732.865071827,Infinity,,0
+"55-qr",17,True,Infinity,437346.226798571,Infinity,,0
+"55-rs",17,True,Infinity,437346.226798571,Infinity,,0
+"55-st",17,True,Infinity,437346.226798571,Infinity,,0
+"55-tu",17,True,Infinity,437346.226798571,Infinity,,0
+"55-uv",17,True,Infinity,437346.226798571,Infinity,,0
 "55 near Gimhae",17,True,Infinity,0,Infinity,,0
 "10-a",17,True,Infinity,0,Infinity,,0
 "10-b",17,True,Infinity,0,Infinity,,0
 "10-c",17,True,Infinity,0,Infinity,,0
-"Andong-55",17,True,Infinity,0,Infinity,,0
-"35 east of Andong",17,True,Infinity,784602.525405779,Infinity,,0
-"35ab",17,True,Infinity,784602.525405779,Infinity,,0
-"35bc",17,True,Infinity,784602.525405779,Infinity,,0
-"35cd",17,True,Infinity,784602.525405779,Infinity,,0
+"Andong-55",17,True,Infinity,39840,Infinity,,0
+"35 east of Andong",17,True,Infinity,716202.525405779,Infinity,,0
+"35ab",17,True,Infinity,716202.525405779,Infinity,,0
+"35bc",17,True,Infinity,716202.525405779,Infinity,,0
+"35cd",17,True,Infinity,716202.525405779,Infinity,,0
 "55-Gyeongbuk",17,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",17,True,Infinity,0,Infinity,,0
 "20 west Pohang",17,True,Infinity,0,Infinity,,0
 "20-bc",17,True,Infinity,0,Infinity,,0
 "20-35",17,True,Infinity,0,Infinity,,0
-"20-daegu",17,True,Infinity,325000,Infinity,,0
+"20-daegu",17,True,Infinity,202892.865071827,Infinity,,0
 "Pohang north",17,True,Infinity,0,Infinity,,0
 "Ulsan-1",17,True,Infinity,0,Infinity,,0
 "55-1",17,True,Infinity,0,Infinity,,0
 "1-ab",17,True,Infinity,0,Infinity,,0
-"1-bc",17,True,Infinity,403400,Infinity,,0
-"1-cd",17,True,Infinity,403400,Infinity,,0
-"1-de",17,True,Infinity,403400,Infinity,,0
-"1-ef",17,True,Infinity,403400,Infinity,,0
-"Yangsan-55",17,True,Infinity,403400,Infinity,,0
+"1-bc",17,True,Infinity,565147.373201429,Infinity,,0
+"1-cd",17,True,Infinity,565147.373201429,Infinity,,0
+"1-de",17,True,Infinity,565147.373201429,Infinity,,0
+"1-ef",17,True,Infinity,565147.373201429,Infinity,,0
+"Yangsan-55",17,True,Infinity,664330.226798571,Infinity,,0
 "Pohang Northwest",17,True,Infinity,0,Infinity,,0
 "Busan-Yangsan",17,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",17,True,Infinity,0,Infinity,,0
@@ -1077,53 +1077,53 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",17,False,Infinity,0,Infinity,,0
 "northern sea lane",17,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",17,False,Infinity,0,Infinity,,0
-"Yeongchon north",17,True,Infinity,403400,Infinity,,0
-"Yeongchon south",17,True,Infinity,403400,Infinity,,0
+"Yeongchon north",17,True,Infinity,565147.373201429,Infinity,,0
+"Yeongchon south",17,True,Infinity,565147.373201429,Infinity,,0
 "55-ab",18,True,Infinity,0,Infinity,,0
-"55-bc",18,True,Infinity,0,Infinity,,0
-"55-cd",18,True,Infinity,0,Infinity,,0
-"55-de",18,True,Infinity,0,Infinity,,0
-"55-ef",18,True,Infinity,0,Infinity,,0
-"55fg",18,True,Infinity,0,Infinity,,0
-"55-gh",18,True,Infinity,0,Infinity,,0
-"55-hj",18,True,Infinity,0,Infinity,,0
-"55-jk",18,True,Infinity,0,Infinity,,0
-"55-kl",18,True,Infinity,0,Infinity,,0
-"55-lm",18,True,Infinity,0,Infinity,,0
-"55 west of Daegu",18,True,Infinity,0,Infinity,,0
-"55 east of Daegu",18,True,Infinity,325000,Infinity,,0
-"55-no",18,True,325000,325000,0,1,1
-"55-op",18,True,Infinity,325000,Infinity,,0
-"55-pq",18,True,Infinity,325000,Infinity,,0
-"55-qr",18,True,Infinity,697050.482487315,Infinity,,0
-"55-rs",18,True,Infinity,697050.482487315,Infinity,,0
-"55-st",18,True,Infinity,697050.482487315,Infinity,,0
-"55-tu",18,True,Infinity,697050.482487315,Infinity,,0
-"55-uv",18,True,Infinity,697050.482487315,Infinity,,0
-"55 near Gimhae",18,True,Infinity,688601.669817162,Infinity,,0
+"55-bc",18,True,Infinity,39840,Infinity,,0
+"55-cd",18,True,Infinity,39840,Infinity,,0
+"55-de",18,True,Infinity,39840,Infinity,,0
+"55-ef",18,True,Infinity,39840,Infinity,,0
+"55fg",18,True,Infinity,39840,Infinity,,0
+"55-gh",18,True,Infinity,39840,Infinity,,0
+"55-hj",18,True,Infinity,39840,Infinity,,0
+"55-jk",18,True,Infinity,39840,Infinity,,0
+"55-kl",18,True,Infinity,39840,Infinity,,0
+"55-lm",18,True,Infinity,39840,Infinity,,0
+"55 west of Daegu",18,True,Infinity,39840,Infinity,,0
+"55 east of Daegu",18,True,Infinity,317813.906550099,Infinity,,0
+"55-no",18,True,325000,317813.906550099,7186.09344990074,0.977888943231075,0.977888943231075
+"55-op",18,True,Infinity,317813.906550099,Infinity,,0
+"55-pq",18,True,Infinity,317813.906550099,Infinity,,0
+"55-qr",18,True,Infinity,856399.6,Infinity,,0
+"55-rs",18,True,Infinity,856399.6,Infinity,,0
+"55-st",18,True,Infinity,856399.6,Infinity,,0
+"55-tu",18,True,Infinity,856399.6,Infinity,,0
+"55-uv",18,True,Infinity,856399.6,Infinity,,0
+"55 near Gimhae",18,True,Infinity,628824,Infinity,,0
 "10-a",18,True,Infinity,0,Infinity,,0
 "10-b",18,True,Infinity,0,Infinity,,0
 "10-c",18,True,Infinity,0,Infinity,,0
-"Andong-55",18,True,Infinity,0,Infinity,,0
-"35 east of Andong",18,True,Infinity,825682.229837584,Infinity,,0
-"35ab",18,True,Infinity,825682.229837584,Infinity,,0
-"35bc",18,True,Infinity,825682.229837584,Infinity,,0
-"35cd",18,True,Infinity,825682.229837584,Infinity,,0
+"Andong-55",18,True,Infinity,39840,Infinity,,0
+"35 east of Andong",18,True,Infinity,748892.869576732,Infinity,,0
+"35ab",18,True,Infinity,748892.869576732,Infinity,,0
+"35bc",18,True,Infinity,748892.869576732,Infinity,,0
+"35cd",18,True,Infinity,748892.869576732,Infinity,,0
 "55-Gyeongbuk",18,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",18,True,Infinity,0,Infinity,,0
 "20 west Pohang",18,True,Infinity,0,Infinity,,0
 "20-bc",18,True,Infinity,0,Infinity,,0
 "20-35",18,True,Infinity,0,Infinity,,0
-"20-daegu",18,True,Infinity,325000,Infinity,,0
+"20-daegu",18,True,Infinity,277973.906550099,Infinity,,0
 "Pohang north",18,True,Infinity,0,Infinity,,0
 "Ulsan-1",18,True,Infinity,0,Infinity,,0
 "55-1",18,True,Infinity,0,Infinity,,0
 "1-ab",18,True,Infinity,0,Infinity,,0
-"1-bc",18,True,Infinity,436730.387329848,Infinity,,0
-"1-cd",18,True,Infinity,436730.387329848,Infinity,,0
-"1-de",18,True,Infinity,436730.387329848,Infinity,,0
-"1-ef",18,True,Infinity,436730.387329848,Infinity,,0
-"Yangsan-55",18,True,Infinity,336736.812670153,Infinity,,0
+"1-bc",18,True,Infinity,447419.84,Infinity,,0
+"1-cd",18,True,Infinity,447419.84,Infinity,,0
+"1-de",18,True,Infinity,447419.84,Infinity,,0
+"1-ef",18,True,Infinity,447419.84,Infinity,,0
+"Yangsan-55",18,True,Infinity,632615.6,Infinity,,0
 "Pohang Northwest",18,True,Infinity,0,Infinity,,0
 "Busan-Yangsan",18,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",18,True,Infinity,0,Infinity,,0
@@ -1137,55 +1137,55 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",18,False,Infinity,0,Infinity,,0
 "northern sea lane",18,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",18,False,Infinity,0,Infinity,,0
-"Yeongchon north",18,True,Infinity,436730.387329848,Infinity,,0
-"Yeongchon south",18,True,Infinity,436730.387329848,Infinity,,0
+"Yeongchon north",18,True,Infinity,447419.84,Infinity,,0
+"Yeongchon south",18,True,Infinity,447419.84,Infinity,,0
 "55-ab",19,True,Infinity,0,Infinity,,0
-"55-bc",19,True,Infinity,0,Infinity,,0
-"55-cd",19,True,Infinity,0,Infinity,,0
-"55-de",19,True,Infinity,0,Infinity,,0
-"55-ef",19,True,Infinity,0,Infinity,,0
-"55fg",19,True,Infinity,0,Infinity,,0
-"55-gh",19,True,Infinity,0,Infinity,,0
-"55-hj",19,True,Infinity,0,Infinity,,0
-"55-jk",19,True,Infinity,0,Infinity,,0
-"55-kl",19,True,Infinity,0,Infinity,,0
-"55-lm",19,True,Infinity,0,Infinity,,0
-"55 west of Daegu",19,True,Infinity,0,Infinity,,0
+"55-bc",19,True,Infinity,39840,Infinity,,0
+"55-cd",19,True,Infinity,39840,Infinity,,0
+"55-de",19,True,Infinity,39840,Infinity,,0
+"55-ef",19,True,Infinity,39840,Infinity,,0
+"55fg",19,True,Infinity,39840,Infinity,,0
+"55-gh",19,True,Infinity,39840,Infinity,,0
+"55-hj",19,True,Infinity,39840,Infinity,,0
+"55-jk",19,True,Infinity,39840,Infinity,,0
+"55-kl",19,True,Infinity,39840,Infinity,,0
+"55-lm",19,True,Infinity,39840,Infinity,,0
+"55 west of Daegu",19,True,Infinity,39840,Infinity,,0
 "55 east of Daegu",19,True,Infinity,325000,Infinity,,0
 "55-no",19,True,325000,325000,0,1,1
 "55-op",19,True,Infinity,325000,Infinity,,0
 "55-pq",19,True,Infinity,325000,Infinity,,0
-"55-qr",19,True,Infinity,408758.197831789,Infinity,,0
-"55-rs",19,True,Infinity,408758.197831789,Infinity,,0
-"55-st",19,True,Infinity,408758.197831789,Infinity,,0
-"55-tu",19,True,Infinity,408758.197831789,Infinity,,0
-"55-uv",19,True,Infinity,408758.197831789,Infinity,,0
-"55 near Gimhae",19,True,Infinity,532168,Infinity,,0
-"10-a",19,True,Infinity,0,Infinity,,0
+"55-qr",19,True,Infinity,815887.6,Infinity,,0
+"55-rs",19,True,Infinity,815887.6,Infinity,,0
+"55-st",19,True,Infinity,815887.6,Infinity,,0
+"55-tu",19,True,Infinity,815887.6,Infinity,,0
+"55-uv",19,True,Infinity,815887.6,Infinity,,0
+"55 near Gimhae",19,True,Infinity,731607.6,Infinity,,0
+"10-a",19,True,Infinity,220789.6,Infinity,,0
 "10-b",19,True,Infinity,0,Infinity,,0
 "10-c",19,True,Infinity,0,Infinity,,0
-"Andong-55",19,True,Infinity,0,Infinity,,0
-"35 east of Andong",19,True,Infinity,806381.835302705,Infinity,,0
-"35ab",19,True,Infinity,806381.835302705,Infinity,,0
-"35bc",19,True,Infinity,806381.835302705,Infinity,,0
-"35cd",19,True,Infinity,806381.835302705,Infinity,,0
+"Andong-55",19,True,Infinity,39840,Infinity,,0
+"35 east of Andong",19,True,Infinity,779633.871079881,Infinity,,0
+"35ab",19,True,Infinity,779633.871079881,Infinity,,0
+"35bc",19,True,Infinity,779633.871079881,Infinity,,0
+"35cd",19,True,Infinity,779633.871079881,Infinity,,0
 "55-Gyeongbuk",19,True,Infinity,0,Infinity,,0
 "35-Gyeongbuk",19,True,Infinity,0,Infinity,,0
 "20 west Pohang",19,True,Infinity,0,Infinity,,0
 "20-bc",19,True,Infinity,0,Infinity,,0
 "20-35",19,True,Infinity,0,Infinity,,0
-"20-daegu",19,True,Infinity,325000,Infinity,,0
+"20-daegu",19,True,Infinity,285160,Infinity,,0
 "Pohang north",19,True,Infinity,0,Infinity,,0
 "Ulsan-1",19,True,Infinity,0,Infinity,,0
 "55-1",19,True,Infinity,0,Infinity,,0
 "1-ab",19,True,Infinity,0,Infinity,,0
-"1-bc",19,True,Infinity,401199.402168211,Infinity,,0
-"1-cd",19,True,Infinity,401199.402168211,Infinity,,0
-"1-de",19,True,Infinity,401199.402168211,Infinity,,0
-"1-ef",19,True,Infinity,401199.402168211,Infinity,,0
-"Yangsan-55",19,True,Infinity,123409.802168211,Infinity,,0
+"1-bc",19,True,Infinity,489320,Infinity,,0
+"1-cd",19,True,Infinity,489320,Infinity,,0
+"1-de",19,True,Infinity,489320,Infinity,,0
+"1-ef",19,True,Infinity,489320,Infinity,,0
+"Yangsan-55",19,True,Infinity,489320,Infinity,,0
 "Pohang Northwest",19,True,Infinity,0,Infinity,,0
-"Busan-Yangsan",19,True,Infinity,277789.6,Infinity,,0
+"Busan-Yangsan",19,True,Infinity,0,Infinity,,0
 "Ulsan-Busan",19,True,Infinity,0,Infinity,,0
 "Ulsan-Busan sea",19,True,Infinity,0,Infinity,,0
 "Ulsan sea appraoch",19,True,Infinity,0,Infinity,,0
@@ -1197,5 +1197,5 @@ ArcID,Day,IsOpen,TrafficLimit,TrafficFlowed,TrafficSlack,Utilization,RiskScore
 "sea lane into Pohang",19,False,Infinity,0,Infinity,,0
 "northern sea lane",19,False,Infinity,0,Infinity,,0
 "sea lane into north of pohang",19,False,Infinity,0,Infinity,,0
-"Yeongchon north",19,True,Infinity,401199.402168211,Infinity,,0
-"Yeongchon south",19,True,Infinity,401199.402168211,Infinity,,0
+"Yeongchon north",19,True,Infinity,489320,Infinity,,0
+"Yeongchon south",19,True,Infinity,489320,Infinity,,0

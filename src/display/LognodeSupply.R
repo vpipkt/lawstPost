@@ -6,11 +6,13 @@
 plotClientOnHand <- function(config, logNodeName, levels = 1) {
     require(ggplot2)
     
-    #get the data in 'risk' terms (unit risk and lognode %onhand)
-    deps <- getLognodeClientSupply(configFile, logNodeName, levels)
-
-    #panel plot 
-    pcoh <- ggplot(deps)
+    #get the data in 'risk' terms (unit risk and lognode 1 - %onhand)
+    deps <- getLognodeClientSupply(config, logNodeName, levels)
+    deps$OnHandRel <- 1 - deps$PpnStorageEmpty
+    #panel plot by unit name and level
+    pcoh <- ggplot(deps, aes(x = Day, y = OnHandRel, colour = SupplyType))
+    pcoh + geom_line(lwd = 1) + facet_grid(UnitName ~ level) + ylim(c(0, 1)) + 
+        ylab('On hand amount, percent') +  ggtitle(paste('Units supported by',logNodeName))
 }
 
 # Plot overall dependent unit on-hand risk over time
@@ -38,17 +40,19 @@ getLognodeClientSupply <- function(configFile, logNodeName, levels = 0) {
     deps <- findDependents(unitScript$SupplyScript, logNodeName, maxLevel = levels)
     
     #merge deps object with risk histories; note lognodes may appear in unit
-    lnSupply <-   readLogNodeSupplyHistory(configFile)
-    lnSupply <- subset(lnSupply,  select = c(Day, UnitName, SupplyType, PpnStorageEmpty))
+    lnSupply   <- readLogNodeSupplyHistory(configFile)
+    lnSupply   <- subset(lnSupply,  select = c(Day, UnitName, SupplyType, PpnStorageEmpty))
     unitSupply <- readUnitSupplyHistory(configFile)
-    unitSupply <- subset(unitSupply, select = c(Day, UnitName, SupplyType, RiskScore))
+    unitSupply <- subset(unitSupply, select = c(Day, UnitName, SupplyType, 
+                                                DemandAmount, ConsumedAmount, RiskScore))
     
     deps <- merge(deps, unitSupply, all.x = TRUE)
     deps <- merge(deps, lnSupply, all.x = TRUE)
     
     # Now have two columns to bring together; take lognode if conflict
     deps$PpnStorageEmpty[is.na(deps$PpnStorageEmpty)] <- deps$RiskScore[is.na(deps$PpnStorageEmpty)]
-    deps$level <- as.factor(deps$level) #if continuous, colours are on a gradient  
+    deps$RiskScore <- NULL
+    deps$level <- paste('Level',deps$level) #if continuous, colours are on a gradient  
     return(deps)
 }
 
