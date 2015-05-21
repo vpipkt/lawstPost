@@ -2,16 +2,16 @@
 
 ## Completed
 #  * Read config into a list structure
-#  * Read unit and supply type inputs 
-#  * Read unit script for supply relationships
+#  * Most output files
+#  * Read unit script with all fields rolling
 
 ## TODOs
 #   * Write a function to read everything into one structure.
-#   * Finish unit script - rolling joins
+#   * Where one table's factor refers to another, ensure same levels
 #   * Finish reading in other object types - see list at bottom of file
 #   * Add game name, case name and timestamp to all data frames
 #   * Finish reading scripts: lognode, pipeline, arc
-#   * Read output data
+#   * Read output data arc and pipe history
 #   * Investigate using unit icons in charts
 
 readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', timestamp = date()){
@@ -119,62 +119,71 @@ readUnitScript <- function(config){
     us.supply.dt <- data.table(us.supply)
     setkey(us.supply.dt, UnitName, SupplyType, Day)
     raw.dt <- data.table(raw)
-            
-    # Subsetting by field, merge into the normalized dataframe
+    setkey(raw.dt,  UnitName, Day) 
+    
+    # Subsetting by field, merge into the normalized data table with rolling join
     
     #LATITUDE
-    us <- merge(us, subset(raw, Field == 'LOCATION', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)
-    names(us)[dim(us)[2]] <- 'Latitude'
-    us$Latitude <- as.numeric(us$Latitude)
-    
-    #Longitude
-    us <- merge(us, subset(raw, Field == 'LOCATION', c('UnitName', 'Day', 'V2')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'Longitude'
-    us$Longitude <- as.numeric(us$Longitude)
+    us.dt <- raw.dt[Field=="LOCATION"][us.dt, roll = TRUE]
+    us.dt[, Latitude := as.numeric(V1)]
+    us.dt[, Longitude := as.numeric(V2)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
     
     #Strength 
-    us <- merge(us, subset(raw, Field == 'STRENGTH', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'Strength'
-    us$Strength <- as.numeric(us$Strength)
-       
+    us.dt <- raw.dt[Field=="STRENGTH"][us.dt, roll = TRUE]
+    us.dt[, Strength := as.numeric(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
+           
     #'POSTURE'
-    us <- merge(us, subset(raw, Field == 'POSTURE', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'Posture'
-    us$Posture <- as.factor(us$Posture)
+    us.dt <- raw.dt[Field=="POSTURE"][us.dt, roll = TRUE]
+    us.dt[, Posture := as.factor(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
     
     #Consumption Class 
-    us <- merge(us, subset(raw, Field == 'CONSUMPTION_CLASS', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'ConsumptionClass'
-    us$ConsumptionClass <- as.factor(us$ConsumptionClass)
-    
+    us.dt <- raw.dt[Field=="CONSUMPTION_CLASS"][us.dt, roll = TRUE]
+    us.dt[, ConsumptionClass := as.factor(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
+        
     #Prioritization Class
-    us <- merge(us, subset(raw, Field == 'PRIORITIZATION_CLASS', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'PrioritizationClass'
-    us$PrioritizationClass <- as.factor(us$PrioritizationClass)
+    us.dt <- raw.dt[Field=="PRIORITIZATION_CLASS"][us.dt, roll = TRUE]
+    us.dt[, PrioritizationClass := as.factor(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
     
     # REQUIRED DAYS OF SUPPLY'
-    us <- merge(us, subset(raw, Field == 'REQUIRED_DAYS_OF_SUPPLY', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'ReqDaysSupply'
-    us$ReqDaysSupply <- as.numeric(us$ReqDaysSupply)
-    
+    us.dt <- raw.dt[Field=="REQUIRED_DAYS_OF_SUPPLY"][us.dt, roll = TRUE]
+    us.dt[, ReqDaysSupply := as.numeric(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
+      
     #'DOMAIN'
-    us <- merge(us, subset(raw, Field == 'DOMAIN', c('UnitName', 'Day', 'V1')), 
-                by = c('UnitName', 'Day'), all.x = TRUE)    
-    names(us)[dim(us)[2]] <- 'Domain'
-    us$Domain <- as.factor(us$Domain)    
-    
+    us.dt <- raw.dt[Field=="DOMAIN"][us.dt, roll = TRUE]
+    us.dt[, Domain := as.factor(V1)]
+    us.dt[, V1 := NULL]
+    us.dt[, V2 := NULL]
+    us.dt[, Field := NULL]
+    setkey(us.dt, UnitName, Day)
+        
     # Supply type dependent 
     #SUPPLYING LOG NODE
     setnames(raw.dt, c('UnitName', 'Day', 'Field', 'SupplyType', 'V2'))
-    setkey(raw.dt,  UnitName, SupplyType, Day)
-    #this reassignment may not be the most efficient   
+    setkey(raw.dt,  UnitName, SupplyType, Day) 
     us.supply.dt <- raw.dt[Field=="SUPPLYING_LOG_NODE"][us.supply.dt, roll = TRUE]
     us.supply.dt[, SupplyingLogNode := as.factor(V2)]
     us.supply.dt[, SupplyType := as.factor(SupplyType)]
@@ -188,21 +197,49 @@ readUnitScript <- function(config){
   
     #Supply increment is now numeric; also would rather have supplyingLN be FACTOR.
     
-    return(list(Script = us, 
+    return(list(Script = as.data.frame(us.dt), 
                 SupplyScript = as.data.frame(us.supply.dt)
                 ))
 }
 
-# Objects to read`
-readArcs <- function(config){}
+#TODO 
+#    * read the max loads as a data frame
+#    * read exclusions as a data frame
+readTransports <- function(config){
+    t <- read.csv(config$files$TRANSPORTATION_ASSETS,
+                  skip = 1, header = FALSE, fill = TRUE)
+    t <- t[, 1:9]
+    names(t) <- c('Name', 'Description', 'ConfigurationName', 'Category', 'Availability', 
+                  'Fuel Type', 'Fuel Efficiency', 'Average Speed', 'Max Range')
+    
+    list(transports = t,
+         capacities = data.frame(),
+         exclusions = data.frame()
+    )
+}
+
+# TODO: read intermediate points.
+#   * read fields as character then convert to appropriate type.
+readArcs <- function(config){
+    a <- read.csv(config$files$ARCS, skip = 1, header = FALSE)
+    a <- a[, 1:7]
+    names(a) <- c('Name', 'Description', 'Node1', 'Node2', 'Mode', 'True Length', 'Max Speed')
+    return(a)
+}
+
+readNodes <- function(config){
+    read.csv(config$files$NODES, colClasses = c('factor', 'character', rep('numeric', 2), 'factor'))
+} 
+
 #consumption classes = done
+
+# Objects to read`
 readMaps <- function(config){} #not sure this is really needed
-readNodes <- function(config){} 
 readPipelines <- function(config){}
 readPostures <- function(config){}
 readPriorityClass <- function(config){}  # this structure is the same as consumption class
 readScriptedSorties <- function(config){}
-readTransports <- function(config){}
+
 readWeather <- function(config){} #low priority
 
 #scripts to read
@@ -211,8 +248,6 @@ readLogNodeScript <- function(config){}
 readPipelineScript <- function(config){}
 
 # Read output data
-
-#utility function to locate the output folder.
 
 readLogNodeSupplyHistory <- function(config){
     read.csv(paste(config$OUTPUT_DIR, 'LogNodeSupplyHistory.csv', sep = ''),
@@ -228,3 +263,47 @@ readUnitSupplyHistory <- function(config){
     read.csv(paste(config$OUTPUT_DIR, 'UnitHistory.csv', sep = ''),
              colClasses = c('integer', rep('factor',2), 'character', rep('numeric', 16)))
 }
+
+readSupplyRequests <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'SupplyRequests.csv', sep = ''),
+             colClasses = c(rep('integer', 2), rep('factor', 2), rep('numeric', 3),
+                            'integer', rep('numeric', 2))
+    )
+}
+
+readTransportDeliveries <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'TransportDeliveries.csv', sep = ''),
+             colClasses = c(rep('integer',3), rep('factor', 3), rep('numeric', 2), 
+                            'factor', rep('numeric', 6), 'logical'))
+}
+
+readIncrementDeliveries <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'ScriptedIncrementDeliveries.csv', sep = ''),
+        colClasses = c(rep('integer', 2), 'numeric')         
+    )
+}
+
+readPipelineDeliveries <- function(config){
+    read.csv(paste(config$OUTPUT_DIR, 'PipelineDeliveries.csv', sep = ''),
+             colClasses = c(rep('integer', 2), rep('factor', 2), 'numeric', 
+                            'factor', rep('numeric', 2))
+    )
+}
+
+readDeliveryArcs <- function(config){
+    da <- read.csv(paste(config$OUTPUT_DIR, 'DeliveryArcs.csv', sep = ''),
+             colClasses = c('integer', 'factor')
+             )
+    # merge to get start/end locations 
+    n <- readNodes(config)
+    a <- readArcs(config)
+    a <- merge(a, n, by.x = 'Node1', by.y = 'Name', suffixes = c('', '.o'))
+    a <- merge(a, n, by.x = 'Node2', by.y = 'Name', suffixes = c('', '.d'))
+    a$Description <- NULL
+    a$Description.o <- NULL
+    a$Description.d <- NULL
+    merge(da, a, by.x = 'ArcID', by.y = 'Name', all.x = TRUE, all.y = FALSE)
+}
+
+#Arc history
+#pipelinHistory
