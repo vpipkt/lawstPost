@@ -9,78 +9,43 @@
 # Use `day` argument to subset to the selected day. If day is less than 0, all days are shown in a filmstrip.
 #First cut: flows along delivery arcs, ignoring temp connection; just overall flow don't try to color or complicate
 # TODO
-#   * Add map background
-#   * Add unit icons at locations
+#   * Add map background or other geographic cues?
+#   * Add unit icons at locations? points coloured by risk level
 #   * ? Add temp arcs to units
 #   * options to color supply types or transports differently, or subset
 #   * refactor a function to produce teh needed data frame
-flowMap <- function(lconfig, day = -1, xlim = NULL, ylim = NULL){
+flowMap <- function(lconfig, day = NULL, xLim = NULL, yLim = NULL, alphaRange = c(0.04, 0.4)){
     require(ggplot2)
     require(reshape2)
     require(plyr)
-    
-    # read all the deliveries
-    d <- readCombinedDeliveries(lconfig)
-    
-    # read delivery arcs, which automagically merges in the endpoing coordinates
-    da <- readDeliveryArcs(lconfig)
-
-    # merge delivery arcs with deliveries, then sum cargo volume over location pairs
-    st <- readSupplyTypes(lconfig)
-    st[st$IsLiquid == FALSE,'Density'] <- 1
-        
-    d <- merge(d, st, all.x = TRUE)
-    d$Volume <- d$Density * d$DeliveredAmount
-    
-    #  At this point only tranpsort deliveries are printed with an ID.
-    da <- merge(da, d, by.x = 'TransportDeliveryID', by.y = 'DelivID')
-    
-    m<- melt(da, measure.vars = c('DeliveredAmount', 'FuelAmountExpended', 'Volume'))
-    
-    surface <- dcast(m, Day + ArcID + Latitude + Longitude + Latitude.d + Longitude.d ~ variable, sum,
-                     subset = .(variable == 'Volume'))
-    
-    
-    # subset deliveries with no arcs - air and pipes, also will have scripted increment
-    airdel <- subset(d, !(DelivID %in% da$TransportDeliveryID))
-    # merge no-arc unit locations
-    unitLoc <- readUnitScript(lconfig)
-    unitLoc <- unitLoc$Script[,c('UnitName', 'Day', 'Latitude', 'Longitude')]    
-    
-    # location of requesting unit
-    airdel <- merge(airdel, unitLoc, by.x = c('Day', 'OriginatingUnit'),
-                     by.y = c('Day', 'UnitName'), suffixes = c('', '.o'))
-    # location of supplying unit
-    airdel <- merge(airdel, unitLoc, by.x = c('Day', 'SupplyingLogNode'),
-                     by.y = c('Day', 'UnitName'), suffixes = c('', '.d'))
-     
-    #airpipe <- dcast(melt(airdel, measure.vars = c('DeliveredAmount', 'FuelAmountExpended', 'Volume')),
-    #                 Day + Latitude + Longitude + Latitude.d + Longitude.d ~ variable, sum,
-    #                 subset = .(variable == 'Volume')))
-    cols <- intersect(names(da), names(airdel))
-    m <- melt(rbind(da[cols], airdel[cols]), 
+       
+    m <- melt(flowData(lconfig), 
               measure.vars = c('DeliveredAmount', 'FuelAmountExpended', 'Volume'))
     flows <- dcast(m, Day + Latitude + Longitude + Latitude.d + Longitude.d ~ variable, sum,
                    subset = .(variable == 'Volume'))
     
-    if(day >= 0)
-        flows <- subset(flows, Day == day)
+    if(!(is.null(day)))
+        flows <- subset(flows, Day %in% day)
     
     fm <- ggplot(flows, aes(x = Longitude, y = Latitude))
-    fm <- fm + geom_segment(aes(xend = Longitude.d, yend = Latitude.d, alpha = Volume), 
+    fm <- fm + geom_segment(aes(xend = Longitude.d, yend = Latitude.d, 
+                                alpha = log10(Volume)), 
                             colour = 'white', lwd = 1) +
-        scale_alpha_continuous(range = c(0.03, 0.3)) + coord_equal() + 
-        scale_x_continuous('', breaks=NULL, limits = xlim) + 
-        scale_y_continuous('', breaks=NULL, limits = ylim) +
+        scale_alpha_continuous(range = alphaRange) + coord_equal() + 
+        coord_cartesian(xlim = xLim, ylim = yLim) +
+        scale_x_continuous('', breaks = NULL) + 
+        scale_y_continuous('', breaks = NULL) +
         theme(panel.background = element_rect(fill = 'black', colour = 'black')) 
+        
     
-    if(day < 0)
-        fm + facet_wrap( ~ Day)
+    if(!(is.null(day)) & length(day) == 1)
+        fm + ggtitle(paste('Cargo volume for', lconfig$GAME_NAME, day, day))
     else
-        fm
+        fm + facet_wrap( ~ Day) + 
+        ggtitle(paste('Cargo volume for ', lconfig$GAME_NAME))
     
-    #return(rbind(da[cols], airdel[cols]))
 }
+
 
 
 

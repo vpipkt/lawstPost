@@ -20,17 +20,14 @@ readCombinedDeliveries <- function(lconfig){
     increments$SortieDurationPer  <- 0
     increments$SupplyingLogNode   <- factor(NA,levels=levels(trans.delivery$SupplyingLogNode))
     increments$FuelTypeExpended   <- factor(NA,levels=levels(trans.delivery$FuelTypeExpended))
-    increments$Type               <- 'Increment'
-    increments$Category           <- 'Increment'
+    increments$Type               <- increments$Category <- 'Increment'
     increments$TransportType      <- NA
     increments$DelivID            <- NA
     
     pipe.delivery                    <- readPipelineDeliveries(lconfig)
-    pipe.delivery$FuelAmountExpended <- 0
     pipe.delivery$SortieDurationPer  <- 0
     pipe.delivery$FuelTypeExpended   <- factor(NA,levels=levels(trans.delivery$FuelTypeExpended))
-    pipe.delivery$Type               <- 'Pipeline'
-    pipe.delivery$Category           <- 'Pipeline'
+    pipe.delivery$Type               <- pipe.delivery$Category <- 'Pipeline'
     pipe.delivery$TransportType      <- NA
     pipe.delivery$DelivID            <- NA
     
@@ -51,4 +48,39 @@ readCombinedDeliveries <- function(lconfig){
     
     return(m[columns])
     
+}
+
+# Read LAWST outputs and return a data frame of detailed supply deliveries with geographic start and end points
+flowData <- function(lconfig){
+    # read all the deliveries
+    d <- readCombinedDeliveries(lconfig)
+    
+    # read delivery arcs, which automagically merges in the endpoing coordinates
+    da <- readDeliveryArcs(lconfig)
+    
+    # merge delivery arcs with deliveries, then sum cargo volume over location pairs
+    st <- readSupplyTypes(lconfig)
+    st[st$IsLiquid == FALSE,'Density'] <- 1
+    
+    d <- merge(d, st, all.x = TRUE)
+    d$Volume <- d$Density * d$DeliveredAmount
+    
+    #  At this point only tranpsort deliveries are printed with an ID.
+    da <- merge(da, d, by.x = 'TransportDeliveryID', by.y = 'DelivID')
+    
+    # subset deliveries with no arcs - air and pipes, also will have scripted increment
+    airdel <- subset(d, !(DelivID %in% da$TransportDeliveryID))
+    # merge no-arc unit locations
+    unitLoc <- readUnitScript(lconfig)
+    unitLoc <- unitLoc$Script[,c('UnitName', 'Day', 'Latitude', 'Longitude')]    
+    
+    # location of requesting unit
+    airdel <- merge(airdel, unitLoc, by.x = c('Day', 'OriginatingUnit'),
+                    by.y = c('Day', 'UnitName'), suffixes = c('', '.o'))
+    # location of supplying unit
+    airdel <- merge(airdel, unitLoc, by.x = c('Day', 'SupplyingLogNode'),
+                    by.y = c('Day', 'UnitName'), suffixes = c('', '.d'))
+    
+    cols <- intersect(names(da), names(airdel))
+    return(rbind(da[cols], airdel[cols]))
 }
