@@ -37,17 +37,18 @@ readCombinedDeliveries <- function(lconfig){
     delivery <- increments[columns]
     delivery <- rbind(delivery, pipe.delivery[columns])
     delivery <- rbind(delivery, trans.delivery[columns])
-    
+          
     #merge with requests to get the requesting unit and supply type
     request <- readSupplyRequests(lconfig)
+    st <- readSupplyTypes(lconfig)
+    request <- merge(request, st)
     
     m <- merge(delivery, request, by.x=c('RequestID', 'Day'), by.y = c('ID', 'Day'), 
                all.x = TRUE)
-    
-    columns <- c('OriginatingUnit', 'SupplyType', columns)
-    
+    m$Volume <- m$Density * m$DeliveredAmount
+        
+    columns <- c('OriginatingUnit', 'SupplyType', columns, 'Volume')
     return(m[columns])
-    
 }
 
 # Read LAWST outputs and return a data frame of detailed supply deliveries with geographic start and end points
@@ -57,14 +58,7 @@ flowData <- function(lconfig){
     
     # read delivery arcs, which automagically merges in the endpoing coordinates
     da <- readDeliveryArcs(lconfig)
-    
-    # merge delivery arcs with deliveries, then sum cargo volume over location pairs
-    st <- readSupplyTypes(lconfig)
-    st[st$IsLiquid == FALSE,'Density'] <- 1
-    
-    d <- merge(d, st, all.x = TRUE)
-    d$Volume <- d$Density * d$DeliveredAmount
-    
+      
     #  At this point only tranpsort deliveries are printed with an ID.
     da <- merge(da, d, by.x = 'TransportDeliveryID', by.y = 'DelivID')
     

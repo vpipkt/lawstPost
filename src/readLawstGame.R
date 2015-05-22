@@ -85,6 +85,7 @@ readSupplyTypes <- function(config){
                    colClasses = c('factor', 'character', 'factor', 'logical', 'numeric'),
                    col.names = c('SupplyType', 'Description', 
                                  'SupplyClass', 'IsLiquid', 'Density'))
+    st[st$IsLiquid == FALSE,'Density'] <- 1
     return(st)
 }
 
