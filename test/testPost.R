@@ -22,6 +22,7 @@ source('src/viz/productFlow.R')
 # Read unclass Korea demo
 setwd('exampleGames/K/exe')
 kdemo <- readLawstConfig("../_kdemo.lconfig")
+# Note the functions below also expect the working directory to be the same unless the game is saved with absolute paths.
 
 # Check the file paths are all good
 mean(sapply(kdemo$files, file.exists)) # should be 1.00
@@ -60,6 +61,14 @@ flowMap(kdemo, 15, xLim = c(128.5, 129.6), yLim = c(34.9, 36.1) )
 # Can also tune the contrast; 0 is transparent and 1 is opaque
 flowMap(kdemo, 15, alphaRange = c(0.01, 0.1))
 flowMap(kdemo, 15, alphaRange = c(0.1, 0.5))
+# Object returned is a ggplot, so we can add to it.
+flowMap(kdemo,19) + geom_hline(yintercept = 36, colour = 'red') #simple annotation
+flowMap(kdemo,14) + 
+    geom_point(data = subset(readUnitScript(kdemo)$Script, Day == 14), 
+               aes(x = Longitude, y = Latitude), colour = 'blue')
+
+#An alternate visualization which sets transparency by log(Volume)
+flowMapLog(kdemo, 14)
 
 # Underlying data of the flow map
 View(flowData(kdemo))

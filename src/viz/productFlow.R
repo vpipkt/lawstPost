@@ -13,11 +13,38 @@
 #   * Add unit icons at locations? points coloured by risk level
 #   * ? Add temp arcs to units
 #   * options to color supply types or transports differently, or subset
-#   * refactor a function to produce teh needed data frame
 flowMap <- function(lconfig, day = NULL, xLim = NULL, yLim = NULL, alphaRange = c(0.04, 0.4)){
+    require(ggplot2)
+
+    flowDat <- flowData(lconfig)
+    
+    if(!(is.null(day)))
+        flowDat <- subset(flowDat, Day %in% day)
+    
+    
+    fm <- ggplot(flowDat, aes(x = Longitude, y = Latitude))
+    fm <- fm + geom_segment(aes(xend = Longitude.d, yend = Latitude.d, 
+                                alpha = Volume), 
+                            colour = 'white', lwd = 1) +
+        scale_alpha_continuous(range = alphaRange) + coord_equal() + 
+        coord_cartesian(xlim = xLim, ylim = yLim) +
+        scale_x_continuous('', breaks = NULL) + 
+        scale_y_continuous('', breaks = NULL) +
+        theme(panel.background = element_rect(fill = 'black', colour = 'black')) 
+    
+    if(!(is.null(day)) & length(day) == 1)
+        fm + ggtitle(paste('Cargo volume for', lconfig$GAME_NAME, 'day', day))
+    else
+        fm + facet_wrap( ~ Day) + 
+        ggtitle(paste('Cargo volume for ', lconfig$GAME_NAME))
+    
+}
+
+flowMapLog <- function(lconfig, day = NULL, xLim = NULL, yLim = NULL, alphaRange = c(0.04, 0.4)){
     require(ggplot2)
     require(reshape2)
     require(plyr)
+    #previous approach summing flows prior to plotting and using log(Volume)
        
     m <- melt(flowData(lconfig), 
               measure.vars = c('DeliveredAmount', 'FuelAmountExpended', 'Volume'))
@@ -39,7 +66,7 @@ flowMap <- function(lconfig, day = NULL, xLim = NULL, yLim = NULL, alphaRange = 
         
     
     if(!(is.null(day)) & length(day) == 1)
-        fm + ggtitle(paste('Cargo volume for', lconfig$GAME_NAME, day, day))
+        fm + ggtitle(paste('Cargo volume for', lconfig$GAME_NAME, 'day', day))
     else
         fm + facet_wrap( ~ Day) + 
         ggtitle(paste('Cargo volume for ', lconfig$GAME_NAME))
