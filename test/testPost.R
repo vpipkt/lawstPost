@@ -13,6 +13,7 @@ getwd()
 source('src/readLawstGame.R')
 source('src/readWriteConsumption.R')
 source('src/combineDeliveries.R')
+source('src/logNodeSupply.R')
 source('src/viz/LogNodeStatusHistory.R')
 source('src/viz/LognodeSupply.R')
 source('src/viz/productFlow.R')
@@ -85,3 +86,5 @@ qplot(x = log(Volume), y = log(FuelAmountExpended), data = readCombinedDeliverie
       colour = TransportType)
 
 
+# Reference table of lognode product flows
+View(subset(getLognodeBalance(kdemo), TopLogNode == 'OBJ BLUE SUPPLY POINT' & SupplyType == 'FUEL'))

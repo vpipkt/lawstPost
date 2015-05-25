@@ -26,7 +26,6 @@ readCombinedDeliveries <- function(lconfig){
     
     pipe.delivery                    <- readPipelineDeliveries(lconfig)
     pipe.delivery$SortieDurationPer  <- 0
-    pipe.delivery$FuelTypeExpended   <- factor(NA,levels=levels(trans.delivery$FuelTypeExpended))
     pipe.delivery$Type               <- pipe.delivery$Category <- 'Pipeline'
     pipe.delivery$TransportType      <- NA
     pipe.delivery$DelivID            <- NA
