@@ -1,0 +1,13 @@
+Arc Name,Day,Field,Value
+"Ship-to-shore",0,IS OPEN,False
+"Ship-to-shore",12,TRAFFIC_CAPACITY,50000
+"Ship-to-shore",17,IS OPEN,True
+"Ship-to-shore",17,TRAFFIC_CAPACITY,Infinity
+"Ship-to-shore",18,IS OPEN,False
+"Miami to U",0,TRAFFIC_CAPACITY,500
+"FtL CC",0,TRAFFIC_CAPACITY,20000
+"FtL CC",3,IS OPEN,False
+"FtL CC",4,IS OPEN,True
+"CC the U",0,TRAFFIC_CAPACITY,1500
+"Miami to CC",1,IS OPEN,False
+"My arc",0,TRAFFIC_CAPACITY,3500

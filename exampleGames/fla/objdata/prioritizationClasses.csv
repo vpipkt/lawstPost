@@ -1,0 +1,7 @@
+Name,Description,{SupplyType,Posture,Priority}
+"SYSTEM GENERATED",""
+"GenericPC","Low priority for sukkas","AMMO","ATTACK",5,"DIESEL","DEFEND",1,"JP-5","ATTACK",1,"WATER","ATTACK",2,"DRY_BULK","DEFEND",1
+"InfantryPC","","AMMO","ATTACK",5,"DIESEL","DEFEND",1,"JP-5","ATTACK",1,"WATER","ATTACK",2,"DRY_BULK","DEFEND",1
+"ArmorPC","faster ammo and fuel","AMMO","ATTACK",10,"DIESEL","DEFEND",6,"JP-5","ATTACK",10,"WATER","ATTACK",4,"DRY_BULK","DEFEND",2,"AMMO","DEFEND",10,"JP-5","DEFEND",8,"WATER","DEFEND",4
+"AviationPC","highest fuel priority","AMMO","ATTACK",10,"DIESEL","DEFEND",2,"JP-5","ATTACK",2,"WATER","ATTACK",2,"DRY_BULK","DEFEND",1
+"LogNode","","AMMO","LOG_NODE",1,"DIESEL","LOG_NODE",1,"JP-5","LOG_NODE",1,"WATER","LOG_NODE",1,"DRY_BULK","LOG_NODE",1

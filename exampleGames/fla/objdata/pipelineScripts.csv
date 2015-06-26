@@ -1,0 +1,14 @@
+Pipeline,Day,Field,Value
+"pippep",0,FROM UNIT,"At Sea"
+"pippep",0,TO UNIT,"Beachhead"
+"pippep",0,IS_OPEN,TRUE
+"pippep",3,IS_OPEN,FALSE
+"pippep",4,IS_OPEN,TRUE
+"New pipeline",0,FROM UNIT,"Everglades"
+"New pipeline",0,TO UNIT,"LAV Co"
+"New pipeline",0,IS_OPEN,TRUE
+"nunu",0,FROM UNIT,"At Sea"
+"nunu",0,TO UNIT,"Everglades"
+"nunu",0,IS_OPEN,TRUE
+"nunu",1,IS_OPEN,FALSE
+"nunu",6,TO UNIT,"ANGLICO"

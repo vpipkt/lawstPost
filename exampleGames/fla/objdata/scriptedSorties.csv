@@ -1,0 +1,7 @@
+Day,Originating Log Node,Destination,Transportation Asset Type,Supply Type,Quantity
+0,"Beachhead","LAV Co","CH-53K","AMMO",0
+0,"At Sea","Force Recon","LCAC","JP-5",150
+1,"At Sea","Everglades","CH-53K","AMMO",5000
+6,"Everglades","Arty Bn","CH-53K","DRY_BULK",25
+6,"At Sea","Arty Bn","CH-53K","DIESEL",200
+6,"Beachhead","Force Recon","Truck","AMMO",400

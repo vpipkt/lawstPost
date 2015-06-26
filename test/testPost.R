@@ -21,8 +21,8 @@ source('src/viz/productFlow.R')
 # To use any of these functions, you must read in a game configuration file using `readLawstConfig`. If the game is saved using relative paths, set the working directory to the expected LAWST executable directory.
 
 # Read unclass Korea demo
-setwd('exampleGames/K/exe')
-kdemo <- readLawstConfig("../_kdemo.lconfig")
+setwd('exampleGames')
+kdemo <- readLawstConfig("k/_kdemo.lconfig")
 # Note the functions below also expect the working directory to be the same unless the game is saved with absolute paths.
 
 # Check the file paths are all good

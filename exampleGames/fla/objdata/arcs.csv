@@ -1,0 +1,27 @@
+Name,Description,Node1,Node2,Mode,True Length,Max Speed (mph),Intermediate Points{y,x}
+"Ship-to-shore","primary sea, lane from ship to shore","Gulf of Mexico","Naples",SEA,22.2,30
+"Naples-Ft Myers","","Naples","Ft Myers",HIGHWAY,52.9,40
+"Ft Lauderdale-Miami","","Ft Lauderdale","Miami",HIGHWAY,37.7,20
+"Ftl to BR","highway","Ft Lauderdale","Boca Raton",HIGHWAY,31.4,55
+"BR to WPB","","West Palm Beach","Boca Raton",HIGHWAY,42.69,45
+"Hwy 27","","Ft Myers","Labelle",HIGHWAY,43.5,45,26.7050058292683,-81.7801789330855,26.6937220304878,-81.607573063197,26.7125283617886,-81.5212701282528
+"Naples I-75","","Naples","Mid I-75",HIGHWAY,102.6,12
+"I-75 East portion","n","Mid I-75","PembrokePines",HIGHWAY,60.9,20,26.1483384227642,-80.4979638996283
+"Miami to U","","Miami","the U",CROSS_COUNTRY,21.1,20
+"Homestead U","chillin","Homestead","the U",CROSS_COUNTRY,25.8,20
+"boca sb","","south bay","West Palm Beach",HIGHWAY,88.6,20,26.3725264249084,-80.2077817252931,26.6402789835165,-80.211485241206
+"coral boca","","Coral Springs","Boca Raton",HIGHWAY,21.65,40
+"coral Laud","","Coral Springs","Ft Lauderdale",HIGHWAY,41.9,35,26.2844053296703,-80.2151887571189,26.1149416849817,-80.2596309480737
+"pembroke - cc","","PembrokePines","Country Club",HIGHWAY,18.9,18
+"coral spring - pp","","Coral Springs","PembrokePines",HIGHWAY,21.6,12
+"PP to FtL","","PembrokePines","Ft Lauderdale",HIGHWAY,21.6,30
+"FtL CC","j","Ft Lauderdale","Country Club",HIGHWAY,29.4,30
+"CC the U","","Country Club","the U",CROSS_COUNTRY,20,55
+"Miami to CC","","Country Club","Miami",CROSS_COUNTRY,31.6,30
+"miami homestead 2","","Miami","Homestead",HIGHWAY,36.4,25,25.6845040274725,-80.3299977504188,25.5896043864469,-80.4003645527638,25.5353760201465,-80.4003645527638
+"Sea Lane South","","Mia Sea","FTL SEA",SEA,39,45
+"Sea Lane Central","","BR SEA","FTL SEA",SEA,31.4103724215692,60,26.2498926117886,-79.9760366263941,26.1784285528455,-79.9472689814126,26.1370546239837,-79.9760366263941
+"BR to Shore","","BR SEA","Boca Raton",SEA,18.5021816952725,60
+"FTL SEA TO SHORE","","Ft Lauderdale","FTL SEA",SEA,20.6097687941056,60
+"MIA SEA TO SHORE","","Mia Sea","Miami",SEA,25,20
+"My arc","","Miami","FTL SEA",SEA,187.294699045665,20,26.5301899172794,-79.8716117266435,26.6696609889706,-79.9236727646724,26.5744124522059,-79.9980456761423

@@ -1,0 +1,5 @@
+Name,Description,LLLat,LLLong,URLat,URLong,ImageFileName
+"Florida","",25.125274,-82.13361,26.975817,-79.922611,"fla\graphics\map.bmp"
+"Afghanistan","The coordinates on this map are incorrect",15,15,45,45,"fla\graphics\satellite.bmp"
+"Sat-Florida","Annotated sattelite view of Florida and northern Cuba",22.3949,-83.5575,28.6344,-78.1903,"fla\graphics\SatFL.png"
+"Bering","View across the Prime Meridian",49.7794,155.152,66.86,-143.588,"fla\graphics\bering.png"

@@ -1,0 +1,11 @@
+Name,Description,ConfigurationName,Category,Availability,Fuel Type,Fuel Efficiency,Average Speed,Max Range,Max Loads{SupplyType;MaxLoad}
+"Truck","","SYSTEM GENERATED","VEHICLE",8,"DIESEL",10,80,300,"AMMO",0,"JP-5",0,"DIESEL",0,"WATER",0,"DRY_BULK",0
+"Truck","","Cross-Country","VEHICLE",8,"JP-5",10,35,720,"AMMO",2500,"JP-5",250,"DIESEL",250,"WATER",250,"DRY_BULK",2000
+"Truck","","Highway","VEHICLE",8,"DIESEL",11,65,825,"AMMO",5000,"JP-5",400,"DIESEL",400,"WATER",550,"DRY_BULK",4500
+"CH-53K","","SYSTEM GENERATED","AIRCRAFT",4.2,,10,80,300,"AMMO",0,"JP-5",0,"DIESEL",0,"WATER",0,"DRY_BULK",0
+"CH-53K","","Default","AIRCRAFT",4.2,"JP-5",0.07,150,225,"AMMO",27000,"JP-5",2500,"DIESEL",2500,"WATER",2100,"DRY_BULK",15000
+"LCAC","landing craft air cushioned","SYSTEM GENERATED","VESSEL",4.2,,10,80,300,"AMMO",0,"JP-5",0,"DIESEL",0,"WATER",0,"DRY_BULK",0
+"LCAC","landing craft air cushioned","Default","VESSEL",4.2,"JP-5",0.08,30,275,"AMMO",5500,"JP-5",5000,"DIESEL",5000,"WATER",0,"DRY_BULK",15000
+"LCAC","landing craft air cushioned","SpecialFuelMode","VESSEL",4.2,"DIESEL",0.09,45,275,"AMMO",0,"JP-5",10000,"DIESEL",10000,"WATER",0,"DRY_BULK",0
+"UselessTruck","","SYSTEM GENERATED","VEHICLE",24,"DIESEL",10,80,300,"AMMO",0,"JP-5",0,"DIESEL",0,"WATER",0,"DRY_BULK",0
+"UselessTruck","","Default","VEHICLE",24,"JP-5",100,95,1000,"AMMO",5000,"JP-5",0,"DIESEL",0,"WATER",5000,"DRY_BULK",5000
