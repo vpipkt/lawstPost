@@ -6,7 +6,8 @@
 #  * Read unit script with all fields rolling
 
 ## TODOs
-#   * Write a function to read everything into one structure.
+#   * Write a function to read object data and outputs into one data structure.
+#   * Refactor function signature(s) to read a list or vector of configs.
 #   * Where one table's factor refers to another, ensure same levels
 #   * Finish reading in other object types - see list at bottom of file
 #   * Add game name, case name and timestamp to all data frames
@@ -14,7 +15,7 @@
 #   * Read output data arc and pipe history
 #   * Investigate using unit icons in charts
 
-readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', timestamp = date()){
+readLawstConfig <- function(configFile = 'game.lconfig', caseName = 'case', timestamp = date()){
     #returns a list of configuration file contents
     cfg <- read.table(configFile, header = FALSE, sep = ",", fill = TRUE,
                       colClasses = rep("character", 3), col.names = c("field", "value1", "value2"))
@@ -30,6 +31,7 @@ readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', t
     return(list(GAME_NAME = cfg$value1[cfg$field == "GAME_NAME"],
                 CASE = caseName,
                 TIMESTAMP = timestamp,
+                WORK_DIR = getwd(),
                 OUTPUT_DIR = outDir,
                 GAME_DURATION = as.numeric(cfg$value1[cfg$field == "GAME_DURATION"]),
                 GAME_START_DATE = list(month = cfg$value1[cfg$field == "GAME_START_DATE"],
@@ -46,27 +48,27 @@ readLawstConfig <- function(configFile = 'game_config.csv', caseName = 'case', t
                 SEA_ESCORT_FUEL_RATE =  as.numeric(cfg$value1[cfg$field == "SEA_ESCORT_FUEL_RATE"]),
                 AIR_ESCORT_FUEL_RATE =  as.numeric(cfg$value1[cfg$field == "AIR_ESCORT_FUEL_RATE"]),
                 files = list(
-                #Begin file names. Replace the windows style slash with /
-                SUPPLY_TYPES = gsub('\\', '/', cfg$value1[cfg$field == "SUPPLY_TYPES"], fixed = TRUE),
-                POSTURES =  gsub('\\', '/', cfg$value1[cfg$field == "POSTURES"], fixed = TRUE),
-                CONSUMPTION_CLASSES =  gsub('\\', '/', cfg$value1[cfg$field == "CONSUMPTION_CLASSES"], fixed = TRUE),
-                #15
-                PRIORITIZATION_CLASSES =  gsub('\\', '/', cfg$value1[cfg$field == "PRIORITIZATION_CLASSES"], fixed = TRUE),
-                MAPS =  gsub('\\', '/', cfg$value1[cfg$field == "MAPS"], fixed = TRUE),
-                NODES =  gsub('\\', '/', cfg$value1[cfg$field == "NODES"], fixed = TRUE),
-                ARCS =  gsub('\\', '/', cfg$value1[cfg$field == "ARCS"], fixed = TRUE),
-                ARC_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "ARC_SCRIPTS"], fixed = TRUE),
-                #20
-                TRANSPORTATION_ASSETS =  gsub('\\', '/', cfg$value1[cfg$field == "TRANSPORTATION_ASSETS"], fixed = TRUE),
-                TRANSPORTATION_MODE_EXCLUSIONS =  gsub('\\', '/', cfg$value1[cfg$field == "TRANSPORTATION_MODE_EXCLUSIONS"], fixed = TRUE),
-                UNITS =  gsub('\\', '/', cfg$value1[cfg$field == "UNITS"], fixed = TRUE),
-                UNIT_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "UNIT_SCRIPTS"], fixed = TRUE),
-                LOG_NODE_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "LOG_NODE_SCRIPTS"], fixed = TRUE),
-                #25
-                PIPELINES =  gsub('\\', '/', cfg$value1[cfg$field == "PIPELINES"], fixed = TRUE),
-                PIPELINE_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "PIPELINE_SCRIPTS"], fixed = TRUE),
-                WEATHER =  gsub('\\', '/', cfg$value1[cfg$field == "WEATHER"], fixed = TRUE),
-                SCRIPTED_SORTIES =  gsub('\\', '/', cfg$value1[cfg$field == "SCRIPTED_SORTIES"], fixed = TRUE)
+                    #Begin file names. Replace the windows style slash with /
+                    SUPPLY_TYPES = gsub('\\', '/', cfg$value1[cfg$field == "SUPPLY_TYPES"], fixed = TRUE),
+                    POSTURES =  gsub('\\', '/', cfg$value1[cfg$field == "POSTURES"], fixed = TRUE),
+                    CONSUMPTION_CLASSES =  gsub('\\', '/', cfg$value1[cfg$field == "CONSUMPTION_CLASSES"], fixed = TRUE),
+                    #15
+                    PRIORITIZATION_CLASSES =  gsub('\\', '/', cfg$value1[cfg$field == "PRIORITIZATION_CLASSES"], fixed = TRUE),
+                    MAPS =  gsub('\\', '/', cfg$value1[cfg$field == "MAPS"], fixed = TRUE),
+                    NODES =  gsub('\\', '/', cfg$value1[cfg$field == "NODES"], fixed = TRUE),
+                    ARCS =  gsub('\\', '/', cfg$value1[cfg$field == "ARCS"], fixed = TRUE),
+                    ARC_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "ARC_SCRIPTS"], fixed = TRUE),
+                    #20
+                    TRANSPORTATION_ASSETS =  gsub('\\', '/', cfg$value1[cfg$field == "TRANSPORTATION_ASSETS"], fixed = TRUE),
+                    TRANSPORTATION_MODE_EXCLUSIONS =  gsub('\\', '/', cfg$value1[cfg$field == "TRANSPORTATION_MODE_EXCLUSIONS"], fixed = TRUE),
+                    UNITS =  gsub('\\', '/', cfg$value1[cfg$field == "UNITS"], fixed = TRUE),
+                    UNIT_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "UNIT_SCRIPTS"], fixed = TRUE),
+                    LOG_NODE_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "LOG_NODE_SCRIPTS"], fixed = TRUE),
+                    #25
+                    PIPELINES =  gsub('\\', '/', cfg$value1[cfg$field == "PIPELINES"], fixed = TRUE),
+                    PIPELINE_SCRIPTS =  gsub('\\', '/', cfg$value1[cfg$field == "PIPELINE_SCRIPTS"], fixed = TRUE),
+                    WEATHER =  gsub('\\', '/', cfg$value1[cfg$field == "WEATHER"], fixed = TRUE),
+                    SCRIPTED_SORTIES =  gsub('\\', '/', cfg$value1[cfg$field == "SCRIPTED_SORTIES"], fixed = TRUE)
                 )
                 ))
 }
@@ -236,7 +238,19 @@ readNodes <- function(config){
 
 # Objects to read`
 readMaps <- function(config){} #not sure this is really needed
-readPipelines <- function(config){}
+
+readPipelines <- function(config){
+    # HEADER := Name,Description,Supply Type, Max Throughput,Max Distance,Fuel Type,Fuel Rate,Sea State Degrade Multipliers {0;1;2;3;4;5;6;7;8;9}
+    p <- read.csv(config$files$PIPELINES,
+                  colClasses = c('factor', 'character', 'factor', rep('numeric', 2), 'factor', rep('numeric', 11)),
+                  col.names = c('Pipeline', 'Description', 'SupplyType', 'Throughput', 'MaxDistance', 'FuelType', 'FuelRate', paste('SeaState', 0:9, sep = '')),
+                  header = FALSE, skip = 1)
+
+    levels(p$SupplyType) <- st <-  readSupplyTypes(config)$SupplyType
+    levels(p$FuelType)   <- st
+    return(p)
+}
+
 readPostures <- function(config){}
 readPriorityClass <- function(config){}  # this structure is the same as consumption class
 readScriptedSorties <- function(config){}
@@ -273,9 +287,18 @@ readSupplyRequests <- function(config){
 }
 
 readTransportDeliveries <- function(config){
-    read.csv(paste(config$OUTPUT_DIR, 'TransportDeliveries.csv', sep = ''),
+    # HEADER := TransportDeliveryID,RequestID,Day,SupplyingLogNode,TransportType,TransportConfiguration,DeliveredAmount,DeliveredWeight,FuelTypeExpended,FuelAmountExpended,ConvoyProtectionFuelExpended,Distance,Sorties,TransportTimeSpent,SortieDurationPer,Scripted
+    td <- read.csv(paste(config$OUTPUT_DIR, 'TransportDeliveries.csv', sep = ''),
              colClasses = c(rep('integer',3), rep('factor', 3), rep('numeric', 2), 
                             'factor', rep('numeric', 6), 'logical'))
+    #Set factor levels to align with rest of game data
+    u <- readUnit(config)
+    t <- readTransports(config)
+    levels(td$SupplyingLogNode) <- u$UnitName[u$IsLogNode]
+    levels(td$TransportType) <- levels(t$transports$Name)
+    levels(td$TransportConfiguration) <- levels(t$transports$ConfigurationName)
+    levels(td$FuelTypeExpended) <- readSupplyTypes(config)$SupplyType
+    return(td)
 }
 
 readIncrementDeliveries <- function(config){
@@ -285,10 +308,16 @@ readIncrementDeliveries <- function(config){
 }
 
 readPipelineDeliveries <- function(config){
-    read.csv(paste(config$OUTPUT_DIR, 'PipelineDeliveries.csv', sep = ''),
+    # header line :=  RequestID,Day,Pipeline,SupplyingLogNode,DeliveredAmount,FuelTypeExpended,FuelAmountExpended,Distance
+        pd <- read.csv(paste(config$OUTPUT_DIR, 'PipelineDeliveries.csv', sep = ''),
              colClasses = c(rep('integer', 2), rep('factor', 2), 'numeric', 
-                            'factor', rep('numeric', 2))
-    )
+                            'factor', rep('numeric', 2)))
+        levels(pd$Pipeline) <- readPipelines(config)$Pipeline
+        u <- readUnit(config)
+        levels(pd$SupplyingLogNode) <- u$UnitName[u$IsLogNode]
+        levels(pd$FuelTypeExpended) <- readSupplyTypes(config)$SupplyType
+        
+        return(pd)
 }
 
 readDeliveryArcs <- function(config){
