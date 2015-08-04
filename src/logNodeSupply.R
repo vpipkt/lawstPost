@@ -1,3 +1,4 @@
+# TODO: replace NAs with zero in getLogNodeBalance.
 
 #Returns a data frame summary of product received and distributed by a lognode
 getLognodeBalance <- function(lconfig){
