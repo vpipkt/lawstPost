@@ -1,0 +1,6 @@
+Name,Description,LLLat,LLLong,URLat,URLong,ImageFileName
+"Political_DB","",31.11,-126.825,42.812,-106.325,"graphics\DB_Poli.png"
+"DB_AO","",31.965,-121.819,35.119,-114.524,"graphics\DB_AO.png"
+"DB_Topo","",31.139,-126.836,42.812,-106.325,"graphics\DB_topo.png"
+"DB_Sat","",32.544,-118.811,34.155,-116.56,"graphics\CaliSat.PNG"
+"DB_Terrain","",32.544,-118.811,34.155,-116.56,"graphics\CaliTerrain.PNG"

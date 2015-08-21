@@ -1,0 +1,12 @@
+Name,Description,Type,Icon Filename,IsLogNode
+"SEA BASE","","","graphics\SFSPCA--------.png",TRUE
+"CLP 1","","US MARINE","graphics\CLP.png",TRUE
+"INF 1","","US MARINE","graphics\Inf.png",FALSE
+"INF 2","","US MARINE","graphics\Inf.png",FALSE
+"INF 3","","US MARINE","graphics\Inf.png",FALSE
+"Tank 1","","US MARINE","graphics\Tank Plt.png",FALSE
+"LAR 1","","US MARINE","graphics\LAR Plt.png",FALSE
+"LAR 2","","US MARINE","graphics\LAR Plt.png",FALSE
+"AAV 1","","US MARINE","graphics\AAV Plt.png",FALSE
+"ARTY Btry","","US MARINE","graphics\ArtyBtry.png",FALSE
+"GirlScout","","Scouts","graphics\GirlScout.png",FALSE

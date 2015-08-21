@@ -1,0 +1,5 @@
+Name,Description,Class of Supply,Is Liquid,Kilograms Per Liter
+"AMMO","","CLASS_V",False,0
+"JP-5","","CLASS_III",True,0.8
+"DRY_BULK","","CLASS_II",False,0
+"WATER","","CLASS_I",True,0.96

@@ -1,16 +1,16 @@
 Name,Description,Type,Icon Filename,IsLogNode
-"Force Recon","26 jun 0800","FORECON","fla\graphics\SNGPUCR-------.png",FALSE
-"ANGLICO","","LIASION","fla\graphics\SNGPUCR-------.png",FALSE
-"Inf Regiment","""test, the "", commas""","GCE","fla\graphics\sampleInfantry.png",FALSE
-"LAV Co","wheeled recon light armor","Light Armoured Rconaisance","fla\graphics\SNGPUCAW------.png",FALSE
-"Tank Bn","Tanks and heavy trucks","TANKS","fla\graphics\sampleArmor.png",FALSE
-"Arty Bn","look up","Artillery!","fla\graphics\sampleArmor.png",FALSE
-"AAV Bn(-)","AAV AAAV EFV ACV","assault amphib","fla\graphics\SNGPUCAW------.png",FALSE
-"CEB Bn(-)","","","fla\graphics\SNGPUCE-------.png",FALSE
-"GS CLR","","","fla\graphics\sampleInfantry.png",FALSE
-"DS CLB","","","fla\graphics\sampleInfantry.png",FALSE
-"Bridge Co(-)","Changed strength this comment and unit type in the interface. The reqd days of supply are now 2.25.(later 26 Jun) l","Engineers","fla\graphics\SNGPUCE-------.png",FALSE
-"Beachhead","this is the main pile of stuff on the beach. defend it well.","lognode","fla\graphics\sampleLog.png",TRUE
-"At Sea","2","log node","fla\graphics\sampleLog.png",TRUE
-"Everglades","","log node","fla\graphics\sampleLog.png",TRUE
-"My 'test"" unit","","","fla\graphics\sampleLog.png",FALSE
+"Force Recon","26 jun 0800","FORECON","graphics\SNGPUCR-------.png",FALSE
+"ANGLICO","","LIASION","graphics\SNGPUCR-------.png",FALSE
+"Inf Regiment","""test, the "", commas""","GCE","graphics\sampleInfantry.png",FALSE
+"LAV Co","wheeled recon light armor","Light Armoured Rconaisance","graphics\SNGPUCAW------.png",FALSE
+"Tank Bn","Tanks and heavy trucks","TANKS","graphics\sampleArmor.png",FALSE
+"Arty Bn","look up","Artillery!","graphics\sampleArmor.png",FALSE
+"AAV Bn(-)","AAV AAAV EFV ACV","assault amphib","graphics\SNGPUCAW------.png",FALSE
+"CEB Bn(-)","","","graphics\SNGPUCE-------.png",FALSE
+"GS CLR","","","graphics\sampleInfantry.png",FALSE
+"DS CLB","","","graphics\sampleInfantry.png",FALSE
+"Bridge Co(-)","Changed strength this comment and unit type in the interface. The reqd days of supply are now 2.25.(later 26 Jun) l","Engineers","graphics\SNGPUCE-------.png",FALSE
+"Beachhead","this is the main pile of stuff on the beach. defend it well.","lognode","graphics\sampleLog.png",TRUE
+"At Sea","2","log node","graphics\sampleLog.png",TRUE
+"Everglades","","log node","graphics\sampleLog.png",TRUE
+"My 'test"" unit","","","graphics\sampleLog.png",FALSE

@@ -1,0 +1,4 @@
+Pipeline,Day,Field,Value
+"JLOTS",0,FROM UNIT,"SEA BASE"
+"JLOTS",0,TO UNIT,"SEA BASE"
+"JLOTS",0,IS_OPEN,TRUE
