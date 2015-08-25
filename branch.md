@@ -21,3 +21,9 @@ then refactor the Xdeliveries readers to merge requests always; then refactor co
 ## Design thought
 
 How to arrange the data structure to do case stacking and acheive other tidy data design objectives. See scanned paper in this repo/branch.
+
+Goals:
+1. for an arbitray set of games; allow tidy data frames of key outputs, with factor levels working well
+2. for any game in a set, convenient cross reference to object particulars 
+3. for all games in a set, arbitrary cross reference
+

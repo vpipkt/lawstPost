@@ -75,18 +75,20 @@ readLawstConfig <- function(configFile = 'game.lconfig', caseName = 'case', time
 
 readUnit <- function(config){
     u <- read.csv(config$files$UNITS, 
-                  colClasses = c("factor", rep("character", 3), "logical"))
-    #not sure if I can actually exploit the icons
+                  colClasses = c(rep("character", 4), "logical"))
+    #not sure if this project will exploit the icons
+    u <- data.frame(GameName = config$GAME_NAME, u, stringsAsFactors = FALSE)
     #Standardize the field names for post processing use
-    names(u) <- c('UnitName', 'Description', 'UnitType', 'UnitIcon', 'IsLogNode')
+    names(u)[c(2:5)] <- c('UnitName', 'UnitDesc', 'UnitType', 'UnitIcon')
     return(u)
 }
 
 readSupplyTypes <- function(config){
     st <- read.csv(config$files$SUPPLY_TYPES, 
-                   colClasses = c('factor', 'character', 'factor', 'logical', 'numeric'),
-                   col.names = c('SupplyType', 'Description', 
+                   colClasses = c(rep('character', 3), 'logical', 'numeric'),
+                   col.names = c('SupplyType', 'SupplyDesc', 
                                  'SupplyClass', 'IsLiquid', 'Density'))
+    st <- data.frame(GameName = config$GAME_NAME, st, stringsAsFactors = FALSE)
     st[st$IsLiquid == FALSE,'Density'] <- 1
     return(st)
 }
@@ -101,28 +103,31 @@ readUnitScript <- function(config){
     
     # This function will return a list of two data frames. One has supply-dependent 
     #   fields. This is the other.
-    us <- expand.grid(UnitName = u$UnitName, Day = seq(from = 0, to = nDay, by = 1))
+    us <- expand.grid(GameName = config$GAME_NAME, 
+                      UnitName = u$UnitName, Day = seq(from = 0, to = nDay, by = 1))
     
-    us.supply <- expand.grid(UnitName = u$UnitName, SupplyType = st$SupplyType,
+    us.supply <- expand.grid(GameName = config$GAME_NAME, 
+                             UnitName = u$UnitName, SupplyType = st$SupplyType,
                              Day = seq(from = 0, to = nDay, by = 1))
     
     #read the unit script file
     raw <- read.csv(config$files$UNIT_SCRIPTS, fill = TRUE,
-                   colClasses = c('factor', 'numeric', rep('character', 3)),
+                   colClasses = c('character', 'numeric', rep('character', 3)),
                    col.names = c('UnitName', 'Day', 'Field', 'V1', 'V2'),
                    header = FALSE, skip = 1) #use this header & skip combination to avoid a warning; the header has 1 too few columns.
     
     # 'fields' all uppercase and replace space with underscore
     raw$Field <- toupper(raw$Field)
     raw$Field <- gsub(" ", "_", raw$Field, fixed = TRUE)
+    raw <- data.frame(GameName = config$GAME_NAME, raw, stringsAsFactors = FALSE)
     
     #convert raw and expand.grids into data.tables to take advantage of rolling merges
     us.dt <- data.table(us)
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
     us.supply.dt <- data.table(us.supply)
-    setkey(us.supply.dt, UnitName, SupplyType, Day)
+    setkey(us.supply.dt, GameName, UnitName, SupplyType, Day)
     raw.dt <- data.table(raw)
-    setkey(raw.dt,  UnitName, Day) 
+    setkey(raw.dt, GameName, UnitName, Day) 
     
     # Subsetting by field, merge into the normalized data table with rolling join
     
@@ -133,7 +138,7 @@ readUnitScript <- function(config){
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
     
     #Strength 
     us.dt <- raw.dt[Field=="STRENGTH"][us.dt, roll = TRUE]
@@ -141,31 +146,31 @@ readUnitScript <- function(config){
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
            
     #'POSTURE'
     us.dt <- raw.dt[Field=="POSTURE"][us.dt, roll = TRUE]
-    us.dt[, Posture := as.factor(V1)]
+    us.dt[, Posture := V1]
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
     
     #Consumption Class 
     us.dt <- raw.dt[Field=="CONSUMPTION_CLASS"][us.dt, roll = TRUE]
-    us.dt[, ConsumptionClass := as.factor(V1)]
+    us.dt[, ConsumptionClass := V1]
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
         
     #Prioritization Class
     us.dt <- raw.dt[Field=="PRIORITIZATION_CLASS"][us.dt, roll = TRUE]
-    us.dt[, PrioritizationClass := as.factor(V1)]
+    us.dt[, PrioritizationClass := V1]
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
     
     # REQUIRED DAYS OF SUPPLY'
     us.dt <- raw.dt[Field=="REQUIRED_DAYS_OF_SUPPLY"][us.dt, roll = TRUE]
@@ -173,32 +178,30 @@ readUnitScript <- function(config){
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
       
     #'DOMAIN'
     us.dt <- raw.dt[Field=="DOMAIN"][us.dt, roll = TRUE]
-    us.dt[, Domain := as.factor(V1)]
+    us.dt[, Domain := V1]
     us.dt[, V1 := NULL]
     us.dt[, V2 := NULL]
     us.dt[, Field := NULL]
-    setkey(us.dt, UnitName, Day)
+    setkey(us.dt, GameName, UnitName, Day)
         
     # Supply type dependent 
     #SUPPLYING LOG NODE
-    setnames(raw.dt, c('UnitName', 'Day', 'Field', 'SupplyType', 'V2'))
-    setkey(raw.dt,  UnitName, SupplyType, Day) 
-    us.supply.dt <- raw.dt[Field=="SUPPLYING_LOG_NODE"][us.supply.dt, roll = TRUE]
-    us.supply.dt[, SupplyingLogNode := as.factor(V2)]
-    us.supply.dt[, SupplyType := as.factor(SupplyType)]
+    setnames(raw.dt, old = 'V1', new = 'SupplyType')
+    setkey(raw.dt,  GameName, UnitName, SupplyType, Day) 
+    us.supply.dt <- raw.dt[Field == "SUPPLYING_LOG_NODE"][us.supply.dt, roll = TRUE]
+    us.supply.dt[, SupplyingLogNode := V2]
+    us.supply.dt[, SupplyType := SupplyType]
     us.supply.dt[, V2 := NULL]
     us.supply.dt[, Field := NULL]
-    setkey(us.supply.dt, UnitName, SupplyType, Day)
+    setkey(us.supply.dt, GameName, UnitName, SupplyType, Day)
              
     #merge in the supply intrements without rolling, as a left outer join
     us.supply.dt[raw.dt[Field == 'SUPPLY_INCREMENT'], 
                  SupplyIncrement := as.numeric(i.V2), nomatch = NA ]
-  
-    #Supply increment is now numeric; also would rather have supplyingLN be FACTOR.
     
     return(list(Script = as.data.frame(us.dt), 
                 SupplyScript = as.data.frame(us.supply.dt)
@@ -210,52 +213,67 @@ readUnitScript <- function(config){
 #    * read exclusions as a data frame
 readTransports <- function(config){
     t <- read.csv(config$files$TRANSPORTATION_ASSETS,
-                  skip = 1, header = FALSE, fill = TRUE)
-    t <- t[, 1:9]
-    names(t) <- c('Name', 'Description', 'ConfigurationName', 'Category', 'Availability', 
-                  'Fuel Type', 'Fuel Efficiency', 'Average Speed', 'Max Range')
+                  skip = 1, header = FALSE, fill = TRUE, stringsAsFactors = FALSE)
+    t <- data.frame(GameName = config$GAME_NAME, t, stringsAsFactors = FALSE)
     
-    list(transports = t,
+    #transport types
+    tr <- t[, c(1:3, 5:6)]
+    names(tr)[2:5] <- c('TransportType', 'TransDesc', 'Category', 'Availability')
+    #now compress out the configurations.
+    tr <- unique(tr)
+    
+    #configurations 
+    c <- t[, 1:10]  
+    names(c)[2:10] <- c('TransportType', 'TransDesc', 'ConfigurationName', 'Category', 
+                        'Availability', 'Fuel Type', 'Fuel Efficiency', 'Average Speed', 'Max Range')
+    
+    #the capacities are a simpler idea of the prioritization class / consumption class 
+    
+    list(transports = tr,
+         configurations = c,
          capacities = data.frame(),
          exclusions = data.frame()
     )
 }
 
 # TODO: read intermediate points.
-#   * read fields as character then convert to appropriate type.
 readArcs <- function(config){
-    a <- read.csv(config$files$ARCS, skip = 1, header = FALSE)
-    a <- a[, 1:7]
-    names(a) <- c('Name', 'Description', 'Node1', 'Node2', 'Mode', 'True Length', 'Max Speed')
+    a <- read.csv(config$files$ARCS, skip = 1, header = FALSE, 
+                  colClasses = c(rep('character', 5), rep('numeric', 2)))
+    a <- a[, 1:7] # Filter out the intermediate points for now.
+    a <- data.frame(GameName = config$GAME_NAME, a, stringsAsFactors = FALSE)
+    names(a)[1 + 1:7] <- c('ArcName', 'ArcDesc', 'Node1', 'Node2', 'Mode', 'True Length', 'Max Speed')
     return(a)
 }
 
+
 readNodes <- function(config){
-    read.csv(config$files$NODES, colClasses = c('factor', 'character', rep('numeric', 2), 'factor'))
+    data.frame(GameName = config$GAME_NAME, 
+               read.csv(config$files$NODES, 
+                        colClasses = c(rep('character', 2), rep('numeric', 2), 'character'),
+                        col.names = c('NodeName', 'NodeDesc', 'Latitude', 'Longitude', 'Domain')),
+               stringsAsFactors = FALSE)
 } 
-
-#consumption classes = done
-
-# Objects to read`
-readMaps <- function(config){} #not sure this is really needed
 
 readPipelines <- function(config){
     # HEADER := Name,Description,Supply Type, Max Throughput,Max Distance,Fuel Type,Fuel Rate,Sea State Degrade Multipliers {0;1;2;3;4;5;6;7;8;9}
     p <- read.csv(config$files$PIPELINES,
-                  colClasses = c('factor', 'character', 'factor', rep('numeric', 2), 'factor', rep('numeric', 11)),
-                  col.names = c('Pipeline', 'Description', 'SupplyType', 'Throughput', 'MaxDistance', 'FuelType', 'FuelRate', paste('SeaState', 0:9, sep = '')),
-                  header = FALSE, skip = 1)
-
-    levels(p$SupplyType) <- st <-  readSupplyTypes(config)$SupplyType
-    levels(p$FuelType)   <- st
-    return(p)
+                  colClasses = c(rep('character', 3), rep('numeric', 2), 'character', rep('numeric', 11)),
+                  col.names = c('Pipeline', 'PipeDesc', 'SupplyType', 'Throughput', 'MaxDistance', 'FuelType', 'FuelRate', paste('SeaState', 0:9, sep = '')),
+                  header = FALSE, skip = 1, stringsAsFactors = FALSE)
+    
+    return(data.frame(GameName = config$GAME_NAME, p, stringsAsFactors = FALSE))
 }
 
+#consumption classes - see separate source file
+
+# Other objects to read.
+readMaps <- function(config){} #not sure this is really needed
+readWeather <- function(config){} #low priority
 readPostures <- function(config){}
-readPriorityClass <- function(config){}  # this structure is the same as consumption class
 readScriptedSorties <- function(config){}
 
-readWeather <- function(config){} #low priority
+
 
 #scripts to read
 readArcScript <- function(config){}
