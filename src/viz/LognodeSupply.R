@@ -1,8 +1,6 @@
 
 #Define a function to plot the relative supply levels of children of a LogNode
 #run this from exe directory if config file uses relative paths
-
-
 plotClientOnHand <- function(config, logNodeName, levels = 1) {
     require(ggplot2)
     
@@ -17,10 +15,6 @@ plotClientOnHand <- function(config, logNodeName, levels = 1) {
 
 # Plot overall dependent unit on-hand risk over time
 # For all levels supplied, use levels = 0. Otherwise levels = 1 is children; 2 is children and grandchildren...
-# TODOs: 
-#   * Better legend for colours (doesn't appear for small N)
-#   * Set alpha proportional to 1 / number of units at the level.
-#   * Extract only dependents by supply type supported. This only seems to impact grandchildren and deeper in the tree. [This seems already to work.]
 plotClientRisk <- function(configFile, logNodeName, levels = 0) {
     require(ggplot2)
     

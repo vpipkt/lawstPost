@@ -1,8 +1,5 @@
 #Test and demonstrate example uses of post processing functions
 
-# Todo: 
-#   * Test/demonstrate absolute path example
-
 #Remove all objects!!
 rm(list=ls())
 

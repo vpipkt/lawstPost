@@ -1,10 +1,6 @@
 # A basic plot of lognode status over time
 # This expands the log node info panel on the app
 
-
-#TODO's: 
-# * how to get supply and transport plot X-axes to perfectly line up (has to do with legend width?)
-
 plotLogNodeHistory <- function(lawstCfg, logNodeName = 'New Lognode'){
     require(ggplot2)
     require(gridExtra)

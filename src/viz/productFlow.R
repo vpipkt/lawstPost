@@ -7,12 +7,6 @@
 # http://spatial.ly/2015/03/mapping-flows/
 
 # Use `day` argument to subset to the selected day. If day is less than 0, all days are shown in a filmstrip.
-#First cut: flows along delivery arcs, ignoring temp connection; just overall flow don't try to color or complicate
-# TODO
-#   * Add map background or other geographic cues?
-#   * Add unit icons at locations? points coloured by risk level
-#   * ? Add temp arcs to units
-#   * options to color supply types or transports differently, or subset
 flowMap <- function(lconfig, day = NULL, xLim = NULL, yLim = NULL, alphaRange = c(0.04, 0.4)){
     require(ggplot2)
 
