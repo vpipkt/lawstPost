@@ -1,0 +1,67 @@
+#Partial implementation of writing LAWST game based on a set of objects returned from analogous read*() functions
+
+writeUnitScript <- function(path = 'UnitScripts.csv', unitScript){
+    # Writes a unit script file (csv) for use in LAWST, based on the `unitScript` object passed in.
+    
+    # The expected object is a list of two data frames
+    #     List of 2
+    #     $ Script      :'data.frame':    x obs. of  10 variables:
+    #     ..$ UnitName           : Factor  
+    #     ..$ Day                : num  
+    #     ..$ Latitude           : num  
+    #     ..$ Longitude          : num  
+    #     ..$ Strength           : num  
+    #     ..$ Posture            : Factor  
+    #     ..$ ConsumptionClass   : Factor  
+    #     ..$ PrioritizationClass: Factor 
+    #     ..$ ReqDaysSupply      : num  
+    #     ..$ Domain             : Factor  
+    #     $ SupplyScript:'data.frame':	x obs. of  5 variables:
+    #         ..$ UnitName        : Factor  
+    #     ..$ Day             : num  
+    #     ..$ SupplyType      : Factor  
+    #     ..$ SupplyingLogNode: Factor  
+    #     ..$ SupplyIncrement : num  
+    
+
+    #shorthand for the script
+    s <- unitScript$Script
+    sup <- unitScript$SupplyScript
+    
+    #open up the file connection for writing.
+    conn <- file(path, open = 'w')
+    writeLines('Unit ID,Day,Field,Value', conn) 
+
+    # Define a function within this closure to handle writing, not ref to `conn`
+    writeVector <- function(fieldname, vector){
+        notna <- !is.na(vector)
+        towrite <- paste(s$UnitName[notna], s$Day[notna], toupper(fieldname), 
+                         vector[notna], sep = ',')
+        writeLines( towrite, conn)
+        return() 
+    }
+    
+    writeTwoVector <- function(fieldname, df, vector1, vector2){
+        notna <- !is.na(vector1) & !is.na(vector2)
+        towrite <- paste(df$UnitName[notna], df$Day[notna],  toupper(fieldname), 
+                         vector1[notna], vector2[notna], sep = ',')
+        writeLines(towrite, conn)
+        return()                        
+    }
+    
+    writeTwoVector('Location',          s, s$Latitude, s$Longitude)
+    
+    writeVector('Strength',             s$Strength)
+    writeVector('Posture',              s$Posture)
+    writeVector('Consumption Class',    s$ConsumptionClass)
+    writeVector('PRIORITIZATION CLASS', s$PrioritizationClass)
+    writeVector('REQUIRED DAYS OF SUPPLY', s$ReqDaysSupply)
+    writeVector('Domain',               s$Domain)
+    
+    writeTwoVector('SUPPLYING LOG NODE', sup, sup$SupplyType, sup$SupplyingLogNode)
+    writeTwoVector('SUPPLY INCREMENT',   sup, sup$SupplyType, sup$SupplyIncrement)
+    
+    close(conn)
+    return()
+    
+}

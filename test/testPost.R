@@ -11,6 +11,7 @@ getwd()
 
 # Read all source files into the environment.
 source('src/readLawstGame.R')
+source('src/writeLawstGame.R')
 source('src/readWriteConsumption.R')
 source('src/combineDeliveries.R')
 source('src/logNodeSupply.R')
