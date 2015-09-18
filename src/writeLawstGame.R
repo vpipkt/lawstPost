@@ -1,5 +1,32 @@
 #Partial implementation of writing LAWST game based on a set of objects returned from analogous read*() functions
 
+writeLawstConfig <- function(path = 'game.lconfig', config){
+    #break the config up into 4 pieces writing the list out, relying on list order from readLawstConfig. This may write extra garbage to the config file output which lawst.exe should ignore
+    
+    #four pieces are: game name thru duration
+    # date, a list of 2
+    # rest of items except
+    # files
+    conn <- file(path, open = 'w')
+    
+    m <- matrix(unlist(c(names(config)[1:5], config[1:5])), ncol = 2)
+    towrite  <- paste(m[, 1], m[, 2], sep = ',')
+    writeLines(text = towrite, con = conn)
+    
+    writeLines(paste('GAME_START_DATE', config$GAME_START_DATE$month, 
+                     config$GAME_START_DATE$day, sep = ','), conn)
+    
+    m <- matrix(unlist(c(names(config)[7:15], config[7:15])), ncol = 2)
+    towrite  <- paste(m[, 1], m[, 2], sep = ',')
+    writeLines(text = towrite, con = conn)
+    
+    m <- matrix(unlist(c(names(config$files), config$files)), ncol = 2)
+    towrite  <- paste(m[, 1], m[, 2], sep = ',')
+    writeLines(text = towrite, con = conn)
+    
+    close(conn)
+}
+
 writeUnitScript <- function(path = 'UnitScripts.csv', unitScript){
     # Writes a unit script file (csv) for use in LAWST, based on the `unitScript` object passed in.
     
@@ -65,3 +92,4 @@ writeUnitScript <- function(path = 'UnitScripts.csv', unitScript){
     return()
     
 }
+
